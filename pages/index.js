@@ -1,0 +1,1 @@
+export default () => <div>cultivo-media-innovation-map</div>

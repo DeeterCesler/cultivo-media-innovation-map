@@ -1,0 +1,18 @@
+{
+  "name": "cultivo-media-innovation-map",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:hcjk/cultivo-media-innovation-map.git",
+  "author": "Henry Kaufman <hkaufman19@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
