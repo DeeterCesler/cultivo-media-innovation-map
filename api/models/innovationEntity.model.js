@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 /**
  * InnovationEntitySchema
@@ -17,7 +17,7 @@ const InnovationEntitySchema = new mongoose.Schema({
    */
   pointOfContact: {
     type: String,
-    required: true,
+    required: true
   },
 
   /**
@@ -29,7 +29,7 @@ const InnovationEntitySchema = new mongoose.Schema({
    */
   pointOfContactEmail: {
     type: String,
-    required: true,
+    required: true
   },
 
   /**
@@ -41,7 +41,7 @@ const InnovationEntitySchema = new mongoose.Schema({
    */
   duAffiliation: {
     type: String,
-    required: true,
+    required: true
   },
 
   /**
@@ -53,7 +53,7 @@ const InnovationEntitySchema = new mongoose.Schema({
    */
   description: {
     type: String,
-    required: true,
+    required: true
   },
 
   /**
@@ -65,7 +65,7 @@ const InnovationEntitySchema = new mongoose.Schema({
    */
   website: {
     type: String,
-    required: true,
+    required: true
   },
 
   /**
@@ -77,7 +77,7 @@ const InnovationEntitySchema = new mongoose.Schema({
    */
   physicalLocation: {
     type: String,
-    required: true,
+    required: true
   },
 
   /**
@@ -89,14 +89,17 @@ const InnovationEntitySchema = new mongoose.Schema({
    */
   innovationDescription: {
     type: String,
-    required: true,
-  },
-});
+    required: true
+  }
+})
 
 // Create a new model using the configured schema
-const InnovationEntityModel = mongoose.model('InnovationEntity', InnovationEntitySchema);
+const InnovationEntityModel = mongoose.model(
+  'InnovationEntity',
+  InnovationEntitySchema
+)
 
 module.exports = {
   InnovationEntitySchema,
-  InnovationEntityModel,
-};
+  InnovationEntityModel
+}

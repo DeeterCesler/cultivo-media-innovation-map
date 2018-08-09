@@ -1,7 +1,7 @@
-const { Router } = require('express');
+const { Router } = require('express')
 
-const router = new Router();
+const router = new Router()
 
-router.get('/', (req, res) => res.send('api endpoint'));
+router.get('/', (req, res) => res.send('api endpoint'))
 
-module.exports = router;
+module.exports = router

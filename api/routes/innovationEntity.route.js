@@ -1,13 +1,13 @@
-const { Router } = require('express');
+const { Router } = require('express')
 
-const { InnovationEntityModel } = require('../models/innovationEntity.model');
+const { InnovationEntityModel } = require('../models/innovationEntity.model')
 
-const router = new Router();
+const router = new Router()
 
 router.get('/', async (req, res) => {
-  const innovationEntities = await InnovationEntityModel.find({});
+  const innovationEntities = await InnovationEntityModel.find({})
 
-  return res.send(innovationEntities);
-});
+  return res.send(innovationEntities)
+})
 
-module.exports = router;
+module.exports = router
