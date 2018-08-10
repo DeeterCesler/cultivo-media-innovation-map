@@ -1,13 +1,24 @@
 const mongoose = require('mongoose')
 
 /**
- * InnovationEntitySchema
+ * OrganizationSchema
  *
  * mongoose schema
  *
- * The configuration for a schema that models what an innovationEntity looks like.
+ * The configuration for a schema that models what an organization looks like.
  */
-const InnovationEntitySchema = new mongoose.Schema({
+const OrganizationSchema = new mongoose.Schema({
+  /**
+   * name
+   *
+   * string
+   *
+   * The name of the organization or entity.
+   */
+  name: {
+    type: String,
+    required: true
+  },
   /**
    * pointOfContact
    *
@@ -94,12 +105,12 @@ const InnovationEntitySchema = new mongoose.Schema({
 })
 
 // Create a new model using the configured schema
-const InnovationEntityModel = mongoose.model(
-  'InnovationEntity',
-  InnovationEntitySchema
+const OrganizationModel = mongoose.model(
+  'OrganizationModel',
+  OrganizationSchema
 )
 
 module.exports = {
-  InnovationEntitySchema,
-  InnovationEntityModel
+  OrganizationSchema,
+  OrganizationModel
 }

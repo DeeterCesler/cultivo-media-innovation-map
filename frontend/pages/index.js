@@ -1,3 +1,5 @@
 import React from 'react'
 
-export default () => <div>cultivo-media-innovation-map</div>
+import App from '../components/App'
+
+export default () => <App />

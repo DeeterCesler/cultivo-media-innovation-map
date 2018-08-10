@@ -27,7 +27,7 @@ const startup = async () => {
   // Handle other requests using next
   server.get('*', (req, res) => handle(req, res))
 
-  const PORT = process.env.PORT || 4005
+  const PORT = process.env.PORT || 4006
 
   // Listen on the port
   server.listen(PORT, () =>
