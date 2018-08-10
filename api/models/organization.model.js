@@ -64,7 +64,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   description: {
     type: String,
-    required: true
+    required: false
   },
 
   /**
@@ -76,7 +76,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   website: {
     type: String,
-    required: true
+    required: false
   },
 
   /**
@@ -88,7 +88,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   physicalLocation: {
     type: String,
-    required: true
+    required: false
   },
 
   /**
