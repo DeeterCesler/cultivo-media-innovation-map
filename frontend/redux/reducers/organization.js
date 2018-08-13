@@ -9,7 +9,7 @@ import {
 const defaultState = {
   loading: false,
   loaded: false,
-  organizations: null,
+  organizations: [],
   selectedOrganization: null,
 };
 

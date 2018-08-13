@@ -12,7 +12,9 @@ const App = ({ selectedOrganization }) => (
 );
 
 App.propTypes = {
-  selectedOrganization: PropTypes.func,
+  selectedOrganization: PropTypes.shape({
+    name: PropTypes.string,
+  }),
 };
 
 App.defaultProps = {

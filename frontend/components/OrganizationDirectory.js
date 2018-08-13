@@ -63,9 +63,13 @@ const OrganizationDirectory = ({
 );
 
 OrganizationDirectory.propTypes = {
-  organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
+  organizations: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
   selectOrganization: PropTypes.func.isRequired,
+};
+
+OrganizationDirectory.defaultProps = {
+  organizations: [],
 };
 
 export default OrganizationDirectory;

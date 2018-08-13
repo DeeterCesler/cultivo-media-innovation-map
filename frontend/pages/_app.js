@@ -1,6 +1,7 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import configureStore from '../redux/store';
 
