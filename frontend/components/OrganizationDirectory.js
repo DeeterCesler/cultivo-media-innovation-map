@@ -2,20 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledOrganizationDirectory = styled.div`
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  height: 100%;
-  padding: 8px 24px;
-  width: 100%;
-`;
+import { OrganizationSidebar, OrganizationSidebarWrapper } from './ui/OrganizationSidebar';
 
-const StyledOrganizationDirectoryWrapper = styled.div`
-  height: calc(100vh - 96px);
-  padding: 40px;
-  width: 360px;
-`;
+import { colors } from './ui/variables';
 
 const OrganizationsList = styled.div`
   height: 100%;
@@ -26,6 +15,12 @@ const OrganizationsList = styled.div`
     &:not(:last-child) {
       border-bottom: solid 1px #eee;
     }
+    p {
+      color: ${colors.black};
+    }
+    small {
+      color: ${colors.gray};
+    }
   }
 `;
 
@@ -34,8 +29,8 @@ const OrganizationDirectory = ({
   loading,
   selectOrganization,
 }) => (
-  <StyledOrganizationDirectoryWrapper>
-    <StyledOrganizationDirectory>
+  <OrganizationSidebarWrapper>
+    <OrganizationSidebar>
       <OrganizationsList>
         {organizations
           && organizations.map(organization => (
@@ -58,8 +53,8 @@ const OrganizationDirectory = ({
         Currently loading...
       </p>
       )}
-    </StyledOrganizationDirectory>
-  </StyledOrganizationDirectoryWrapper>
+    </OrganizationSidebar>
+  </OrganizationSidebarWrapper>
 );
 
 OrganizationDirectory.propTypes = {
