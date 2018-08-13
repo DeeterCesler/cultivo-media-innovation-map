@@ -7,7 +7,7 @@ const router = new Router()
 router.get('/', async (req, res) => {
   try {
     const organizations = await OrganizationModel.find({}).exec()
-    return res.send(organizations)
+    return res.status(200).send(organizations)
   } catch (err) {
     return res.status(err.status || 422).send(err)
   }

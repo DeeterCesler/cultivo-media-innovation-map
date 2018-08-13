@@ -24,15 +24,12 @@ const fetchOrganizationsFailure = error => ({
   error
 })
 
-export const fetchOrganizations = () => async dispatch => {
+export const fetchOrganizations = () => dispatch => {
   dispatch(fetchOrganizationsRequest())
 
-  try {
-    const organizations = await readOrganizations()
-    dispatch(fetchOrganizationsSuccess(organizations))
-  } catch (err) {
-    dispatch(fetchOrganizationsFailure(err))
-  }
+  return readOrganizations
+    .then(organizations => dispatch(fetchOrganizationsSuccess(organizations)))
+    .catch(err => dispatch(fetchOrganizationsFailure(err)))
 }
 
 export const selectOrganization = organization => ({

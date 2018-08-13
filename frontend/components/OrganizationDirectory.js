@@ -4,7 +4,11 @@ import PropTypes from 'prop-types'
 const OrganizationDirectory = ({ organizations, loading }) => (
   <div>
     {organizations &&
-      organizations.map(organization => <p>{organization.name}</p>)}
+      organizations.map(organization => (
+        <div key={organization._id}>
+          <p>{organization.name}</p>
+        </div>
+      ))}
     {loading && <p>Currently loading...</p>}
   </div>
 )
