@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import {
   fetchOrganizations as fetchOrganizationsAction,
-  selectOrganization as selectOrganizationAction,
+  fetchOrganization as fetchOrganizationAction,
 } from '../redux/actions/organization';
 
 import OrganizationDirectoryComponent from '../components/OrganizationDirectory';
@@ -40,7 +40,7 @@ const mapStateToProps = ({ organization: { organizations, loading } }) => ({
 
 const mapDispatchToProps = {
   fetchOrganizations: fetchOrganizationsAction,
-  selectOrganization: selectOrganizationAction,
+  selectOrganization: fetchOrganizationAction,
 };
 
 export default connect(

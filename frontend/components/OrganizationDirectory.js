@@ -36,7 +36,7 @@ const OrganizationDirectory = ({
           && organizations.map(organization => (
             <div
               key={organization._id} // eslint-disable-line
-              onClick={() => selectOrganization(organization)}
+              onClick={() => selectOrganization(organization._id)}
               className="organization-list-item"
             >
               <p>
