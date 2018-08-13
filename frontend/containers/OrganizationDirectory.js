@@ -18,6 +18,8 @@ class OrganizationDirectory extends Component {
   }
 
   componentDidMount = () => {
+    // If we already have organizations, we don't need to refetch them
+    if (this.props.organizations.length > 0) return;
     this.props.fetchOrganizations();
   }
 
