@@ -1,3 +1,3 @@
-import apiRequest from '../helpers/api'
+import apiRequest from '../helpers/api';
 
-export const readOrganizations = apiRequest('organizations')
+export const readOrganizations = apiRequest('organizations');

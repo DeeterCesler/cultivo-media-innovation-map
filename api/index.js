@@ -1,12 +1,12 @@
-const { Router } = require('express')
+const { Router } = require('express');
 
-const organizationRoute = require('./routes/organization.route')
+const organizationRoute = require('./routes/organization.route');
 
-const router = new Router()
+const router = new Router();
 
 // Routes
-router.get('/', (req, res) => res.send('api endpoint'))
+router.get('/', (req, res) => res.send('api endpoint'));
 
-router.use('/organizations', organizationRoute)
+router.use('/organizations', organizationRoute);
 
-module.exports = router
+module.exports = router;

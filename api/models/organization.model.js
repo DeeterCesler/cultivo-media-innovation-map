@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 /**
  * OrganizationSchema
@@ -17,7 +17,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   name: {
     type: String,
-    required: true
+    required: true,
   },
   /**
    * pointOfContact
@@ -28,7 +28,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   pointOfContact: {
     type: String,
-    required: true
+    required: true,
   },
 
   /**
@@ -40,7 +40,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   pointOfContactEmail: {
     type: String,
-    required: true
+    required: true,
   },
 
   /**
@@ -52,7 +52,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   duAffiliation: {
     type: String,
-    required: true
+    required: true,
   },
 
   /**
@@ -64,7 +64,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   description: {
     type: String,
-    required: false
+    required: false,
   },
 
   /**
@@ -76,7 +76,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   website: {
     type: String,
-    required: false
+    required: false,
   },
 
   /**
@@ -88,7 +88,7 @@ const OrganizationSchema = new mongoose.Schema({
    */
   physicalLocation: {
     type: String,
-    required: false
+    required: false,
   },
 
   /**
@@ -100,17 +100,17 @@ const OrganizationSchema = new mongoose.Schema({
    */
   innovationDescription: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
 // Create a new model using the configured schema
 const OrganizationModel = mongoose.model(
   'OrganizationModel',
-  OrganizationSchema
-)
+  OrganizationSchema,
+);
 
 module.exports = {
   OrganizationSchema,
-  OrganizationModel
-}
+  OrganizationModel,
+};

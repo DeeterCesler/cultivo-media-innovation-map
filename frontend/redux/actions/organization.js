@@ -1,42 +1,39 @@
-import { readOrganizations } from '../api/organization'
+import { readOrganizations } from '../api/organization';
 
-export const FETCH_ORGANIZATIONS_REQUEST =
-  'organization/FETCH_ORGANIZATIONS_REQUEST'
-export const FETCH_ORGANIZATIONS_SUCCESS =
-  'organization/FETCH_ORGANIZATIONS_SUCCESS'
-export const FETCH_ORGANIZATIONS_FAILURE =
-  'organization/FETCH_ORGANIZATIONS_FAILURE'
+export const FETCH_ORGANIZATIONS_REQUEST = 'organization/FETCH_ORGANIZATIONS_REQUEST';
+export const FETCH_ORGANIZATIONS_SUCCESS = 'organization/FETCH_ORGANIZATIONS_SUCCESS';
+export const FETCH_ORGANIZATIONS_FAILURE = 'organization/FETCH_ORGANIZATIONS_FAILURE';
 
-export const SELECT_ORGANIZATION = 'organization/SELECT_ORGANIZATION'
-export const DESELECT_ORGANIZATION = 'organization/DESELECT_ORGANIZATION'
+export const SELECT_ORGANIZATION = 'organization/SELECT_ORGANIZATION';
+export const DESELECT_ORGANIZATION = 'organization/DESELECT_ORGANIZATION';
 
 const fetchOrganizationsRequest = () => ({
-  type: FETCH_ORGANIZATIONS_REQUEST
-})
+  type: FETCH_ORGANIZATIONS_REQUEST,
+});
 
 const fetchOrganizationsSuccess = organizations => ({
   type: FETCH_ORGANIZATIONS_SUCCESS,
-  organizations
-})
+  organizations,
+});
 
 const fetchOrganizationsFailure = error => ({
   type: FETCH_ORGANIZATIONS_FAILURE,
-  error
-})
+  error,
+});
 
-export const fetchOrganizations = () => dispatch => {
-  dispatch(fetchOrganizationsRequest())
+export const fetchOrganizations = () => (dispatch) => {
+  dispatch(fetchOrganizationsRequest());
 
   return readOrganizations
     .then(organizations => dispatch(fetchOrganizationsSuccess(organizations)))
-    .catch(err => dispatch(fetchOrganizationsFailure(err)))
-}
+    .catch(err => dispatch(fetchOrganizationsFailure(err)));
+};
 
 export const selectOrganization = organization => ({
   type: SELECT_ORGANIZATION,
-  organization
-})
+  organization,
+});
 
 export const deselectOrganization = () => ({
-  type: DESELECT_ORGANIZATION
-})
+  type: DESELECT_ORGANIZATION,
+});

@@ -1,10 +1,10 @@
-const cacheOrganizationsTask = require('./airtable.task')
+const cacheOrganizationsTask = require('./airtable.task');
 
 // Create a runTasks function that handles caching the data from airtable
 const runTasks = async () => {
-  await cacheOrganizationsTask()
+  await cacheOrganizationsTask();
 
-  console.info('Finished running tasks.')
+  console.info('Finished running tasks.');
 };
 
-module.exports = runTasks
+module.exports = runTasks;

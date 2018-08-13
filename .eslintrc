@@ -1,26 +1,12 @@
 {
   "parser": "babel-eslint",
-  "env": {
-    "es6": true,
-    "node": true
-  },
-  "extends": [
-    "prettier",
-    "prettier/react",
-    "prettier/standard"
-  ],
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "plugins": [
-    "prettier",
-    "react",
-    "standard"
-  ],
+  "extends": "airbnb",
   "rules": {
-    "prettier/prettier": "error"
+    "react/jsx-filename-extension": 0,
+    "react/destructuring-assignment": 0,
+    "no-underscore-dangle": 0
+  },
+  "globals": {
+    "window": true
   }
 }

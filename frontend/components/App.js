@@ -1,11 +1,22 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import OrganizationDirectory from '../containers/OrganizationDirectory'
+import OrganizationDirectory from '../containers/OrganizationDirectory';
+import OrganizationDetails from '../containers/OrganizationDetails';
 
-const App = () => (
-  <div>
-    <OrganizationDirectory />
+const App = ({ selectedOrganization }) => (
+  <div style={{ height: '100%', width: '100%' }}>
+    {!selectedOrganization && <OrganizationDirectory />}
+    {selectedOrganization && <OrganizationDetails />}
   </div>
-)
+);
 
-export default App
+App.propTypes = {
+  selectedOrganization: PropTypes.func,
+};
+
+App.defaultProps = {
+  selectedOrganization: null,
+};
+
+export default App;

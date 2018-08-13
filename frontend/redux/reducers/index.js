@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import organization from './organization'
+import organization from './organization';
 
 export default combineReducers({
-  organization
-})
+  organization,
+});

@@ -1,44 +1,49 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import { fetchOrganizations } from '../redux/actions/organization'
+import {
+  fetchOrganizations as fetchOrganizationsAction,
+  selectOrganization as selectOrganizationAction,
+} from '../redux/actions/organization';
 
-import OrganizationDirectoryComponent from '../components/OrganizationDirectory'
+import OrganizationDirectoryComponent from '../components/OrganizationDirectory';
 
 class OrganizationDirectory extends Component {
   static propTypes = {
-    organizations: PropTypes.array,
-    fetchOrganizations: PropTypes.func,
-    loading: PropTypes.bool
+    organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
+    fetchOrganizations: PropTypes.func.isRequired,
+    selectOrganization: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
   }
 
   componentDidMount = () => {
-    this.props.fetchOrganizations()
+    this.props.fetchOrganizations();
   }
 
   render = () => {
-    const { organizations, loading } = this.props
+    const { organizations, loading, selectOrganization } = this.props;
     return (
       <OrganizationDirectoryComponent
         organizations={organizations}
         loading={loading}
+        selectOrganization={selectOrganization}
       />
-    )
+    );
   }
 }
 
 const mapStateToProps = ({ organization: { organizations, loading } }) => ({
   organizations,
-  loading
-})
+  loading,
+});
 
 const mapDispatchToProps = {
-  fetchOrganizations
-}
+  fetchOrganizations: fetchOrganizationsAction,
+  selectOrganization: selectOrganizationAction,
+};
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(OrganizationDirectory)
+  mapDispatchToProps,
+)(OrganizationDirectory);
