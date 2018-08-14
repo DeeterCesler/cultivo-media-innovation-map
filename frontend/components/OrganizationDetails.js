@@ -20,18 +20,21 @@ import {
 import { colors } from './ui/variables';
 
 const StyledOrganizationDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 32px);
   padding: 16px 0;
 `;
 
 const StyledOrganizationDetailsHeader = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #999;
   border-radius: 8px 8px 0 0;
   color: #fff;
   display: flex;
   flex-direction: column;
   height: 120px;
   justify-content: flex-end;
-  margin: -24px;
+  margin: -24px -24px 0 -24px;
   padding: 24px;
   h4 {
     font-size: 20px;
@@ -43,7 +46,10 @@ const StyledOrganizationDetailsHeader = styled.div`
 `;
 
 const SelectedOrganizationDetailsContent = styled.div`
-  padding-top: 48px;
+  flex-grow: 1;
+  height: auto;
+  overflow-y: scroll;
+  padding-top: 24px;
   p {
     color: ${colors.black};
   }
