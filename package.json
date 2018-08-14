@@ -9,7 +9,8 @@
     "precommit": "lint-staged",
     "dev": "nodemon index.js",
     "build": "next build frontend",
-    "start": "node index.js",
+    "start": "NODE_ENV=production node index.js",
+    "start:dev": "node index.js",
     "lint": "eslint '**/*.js'",
     "lint:fix": "yarn lint --fix"
   },
