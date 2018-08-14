@@ -8,7 +8,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "dev": "nodemon index.js",
-    "build": "next build client",
+    "build": "next build frontend",
     "start": "node index.js",
     "lint": "eslint '**/*.js'",
     "lint:fix": "yarn lint --fix"
