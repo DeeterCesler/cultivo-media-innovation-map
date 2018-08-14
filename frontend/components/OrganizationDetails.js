@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {
+  CardTableRow,
+  CardTableRowHead,
+  CardTableRowSub,
+} from 'du-board-design-system';
+
+import {
   CircleLetter,
   Flex,
+  Grow,
   Heading,
   OrganizationSidebar,
   OrganizationSidebarWrapper,
@@ -39,6 +46,13 @@ const SelectedOrganizationDetailsContent = styled.div`
   padding-top: 48px;
   p {
     color: ${colors.black};
+  }
+  a {
+    color: ${colors.blue};
+    text-decoration: none;
+    &:hover {
+      opacity: .7;
+    }
   }
 `;
 
@@ -92,6 +106,41 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
               </p>
             </OrganizationContact>
           </Flex>
+          <br />
+          <br />
+          <Heading>
+            Details
+          </Heading>
+          <div>
+            <CardTableRow>
+              <CardTableRowSub>
+                Website
+              </CardTableRowSub>
+              <Grow />
+              <CardTableRowHead>
+                <a href={selectedOrganization.website} target="_blank" rel="noopener noreferrer">
+                  Link
+                </a>
+              </CardTableRowHead>
+            </CardTableRow>
+            <CardTableRow>
+              <CardTableRowSub>
+                DU Affiliation
+              </CardTableRowSub>
+              <Grow />
+              <CardTableRowHead>
+                {selectedOrganization.duAffiliation}
+              </CardTableRowHead>
+            </CardTableRow>
+          </div>
+          <br />
+          <br />
+          <Heading>
+            Innovation Description
+          </Heading>
+          <p>
+            {selectedOrganization.innovationDescription}
+          </p>
         </SelectedOrganizationDetailsContent>
       </StyledOrganizationDetails>
     </OrganizationSidebar>

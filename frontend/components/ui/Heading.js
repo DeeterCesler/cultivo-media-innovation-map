@@ -6,6 +6,6 @@ export default styled.p`
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   text-transform: uppercase;
 `;
