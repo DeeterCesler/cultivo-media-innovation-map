@@ -92,6 +92,25 @@ const OrganizationSchema = new mongoose.Schema({
   },
 
   /**
+   * location
+   *
+   * object
+   *
+   * A more "under-the-hood" version of storing the location. We don't display this to users, but we
+   *  use it to show the locations of the organizations on the map.
+   */
+  location: {
+    lat: {
+      type: String,
+      required: true,
+    },
+    lng: {
+      type: String,
+      required: true,
+    },
+  },
+
+  /**
    * innovationDescription
    *
    * string

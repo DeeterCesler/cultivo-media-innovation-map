@@ -1,11 +1,38 @@
-import React from 'react';
-import { GoogleMap } from 'react-google-maps';
+import React, { Component } from 'react';
+import ReactMapGL, { Marker } from 'react-map-gl';
+import { OrganizationMapMarker } from './ui';
 
-const OrganizationMap = () => (
-  <GoogleMap
-    defaultZoom={16}
-    defaultCenter={{ lat: 39.676654, lng: -104.962203 }}
-  />
-);
+export default class OrganizationMap extends Component {
+  state = {
+    viewport: {
+      latitude: 39.676654,
+      longitude: -104.962203,
+      zoom: 14,
+    },
+  }
 
-export default OrganizationMap;
+  componentDidMount = () => {
+    this.setState(state => ({
+      ...state,
+      viewport: {
+        ...state.viewport,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
+    }));
+  }
+
+  render = () => (
+    <ReactMapGL
+      {...this.state.viewport}
+      id="test"
+      onViewportChange={viewport => this.setState({ viewport })}
+    >
+      <Marker latitude={39.676654} longitude={-104.962203}>
+        <OrganizationMapMarker onClick={console.log('test1')}>
+          En
+        </OrganizationMapMarker>
+      </Marker>
+    </ReactMapGL>
+  )
+}
