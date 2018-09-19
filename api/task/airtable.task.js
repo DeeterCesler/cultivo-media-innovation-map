@@ -62,6 +62,10 @@ const mapRecordFromAirtable = record => ({
   website: record.get('Website'),
   physicalLocation: record.get('Physical Location'),
   innovationDescription: record.get('Innovation Description') || 'N/A',
+  location: {
+    lat: record.get('Latitude'),
+    lng: record.get('Longitude'),
+  },
 });
 
 /**

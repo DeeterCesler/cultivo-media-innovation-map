@@ -102,11 +102,9 @@ const OrganizationSchema = new mongoose.Schema({
   location: {
     lat: {
       type: String,
-      required: true,
     },
     lng: {
       type: String,
-      required: true,
     },
   },
 

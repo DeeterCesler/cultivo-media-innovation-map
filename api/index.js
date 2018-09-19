@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
 // Import configuration
-const { createAsyncAuthMiddleware } = require('./config/auth.config');
+const { attachAuthContextMiddleware } = require('./config/auth.config');
 
 // Import routes
 const organizationRoute = require('./routes/organization.route');
@@ -10,7 +10,7 @@ const organizationRoute = require('./routes/organization.route');
 const router = new Router();
 
 // Add the async authorization middleware
-router.use(createAsyncAuthMiddleware);
+router.use(attachAuthContextMiddleware);
 
 // Routes
 router.use('/organizations', organizationRoute);
