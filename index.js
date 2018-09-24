@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const schedule = require('node-schedule');
 
 // Require the API routes
@@ -31,8 +32,9 @@ const startup = async () => {
   // Create a new server
   const server = express();
 
-  // Allow json requests and use /api for the api
+  // Allow json requests, cookies, and use /api for the api
   server.use(bodyParser.json());
+  server.use(cookieParser());
   server.use('/api', api);
 
   // Handle other requests using next

@@ -20,10 +20,10 @@ const authenticationFailure = error => ({
   error,
 });
 
-export const fetchAuthenticate = () => (dispatch) => {
+export const fetchAuthenticate = user => (dispatch) => {
   dispatch(authenticationRequest());
 
-  return authenticate
-    .then(user => dispatch(authenticationSuccess(user)))
+  return authenticate(user)
+    .then(u => dispatch(authenticationSuccess(u)))
     .catch(err => dispatch(authenticationFailure(err)));
 };

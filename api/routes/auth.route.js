@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
   }
 
   // Validate and ensure that we have a proper password for the user
-  const validPassword = await comparePassword(password, user.password);
+  const validPassword = await comparePassword(password, user.passwordHash);
 
   if (!validPassword) {
     return handleError(res)({
