@@ -51,6 +51,8 @@ const fetchOrganizationFailure = error => ({
 });
 
 export const fetchOrganization = id => (dispatch) => {
+  // If this function is called without an ID, we want to return immediately
+  if (!id) return Promise.resolve;
   dispatch(fetchOrganizationRequest());
 
   return readOrganization(id)

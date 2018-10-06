@@ -103,11 +103,13 @@ const OrganizationSchema = new mongoose.Schema({
     lat: {
       type: Number,
       required: true,
+      // The default latitude of DU
       default: 39.676654,
     },
     lng: {
       type: Number,
       required: true,
+      // The default longitude of DU
       default: -104.962203,
     },
   },

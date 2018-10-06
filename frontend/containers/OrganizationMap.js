@@ -13,6 +13,11 @@ class OrganizationMap extends Component {
     organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
     fetchOrganizations: PropTypes.func.isRequired,
     selectOrganization: PropTypes.func.isRequired,
+    selectedOrganization: PropTypes.object,
+  }
+
+  static defaultProps = {
+    selectedOrganization: null,
   }
 
   componentDidMount = () => {
@@ -22,9 +27,10 @@ class OrganizationMap extends Component {
   }
 
   render = () => {
-    const { organizations, selectOrganization } = this.props;
+    const { organizations, selectOrganization, selectedOrganization } = this.props;
     return (
       <OrganizationMapComponent
+        selectedOrganization={selectedOrganization}
         organizations={organizations}
         selectOrganization={selectOrganization}
       />
@@ -33,8 +39,9 @@ class OrganizationMap extends Component {
 }
 
 // The organization map must have all organizations that we wish to render on the map
-const mapStateToProps = ({ organization: { organizations } }) => ({
+const mapStateToProps = ({ organization: { organizations, selectedOrganization } }) => ({
   organizations,
+  selectedOrganization,
 });
 
 const mapDispatchToProps = {

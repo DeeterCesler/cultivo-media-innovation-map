@@ -7,6 +7,11 @@ export default class OrganizationMap extends Component {
   static propTypes = {
     organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
     selectOrganization: PropTypes.func.isRequired,
+    selectedOrganization: PropTypes.object,
+  }
+
+  static defaultProps = {
+    selectedOrganization: null,
   }
 
   state = {
@@ -29,7 +34,7 @@ export default class OrganizationMap extends Component {
   }
 
   render = () => {
-    const { organizations, selectOrganization } = this.props;
+    const { organizations, selectOrganization, selectedOrganization } = this.props;
     return (
       <ReactMapGL
         {...this.state.viewport}
@@ -42,7 +47,10 @@ export default class OrganizationMap extends Component {
             latitude={organization.location.lat}
             longitude={organization.location.lng}
           >
-            <OrganizationMapMarker onClick={() => selectOrganization(organization._id)}>
+            <OrganizationMapMarker
+              onClick={() => selectOrganization(organization._id)}
+              active={selectedOrganization && organization._id === selectedOrganization._id}
+            >
               {/* The first two characters of the organization's name */}
               {organization.name.substring(0, 2)}
             </OrganizationMapMarker>
