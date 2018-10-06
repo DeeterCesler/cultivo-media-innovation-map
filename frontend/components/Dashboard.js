@@ -33,7 +33,6 @@ export default class Dashboard extends Component {
   handleSubmit = (e) => {
     // Prevent the page from refreshing
     e.preventDefault();
-    console.log(this.state);
     // Authenticate the user
     this.props.authenticate({
       username: this.state.username,
@@ -47,9 +46,20 @@ export default class Dashboard extends Component {
       <div>
         {user
         && (
-          <p>
-            A user is currently authenticated.
-          </p>
+          <div>
+            <h3>
+              Rudimentary Editing
+            </h3>
+            <table border={1}>
+              <thead>
+                <tr>
+                  <th>
+                    Test
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         )}
         {!user
         && (

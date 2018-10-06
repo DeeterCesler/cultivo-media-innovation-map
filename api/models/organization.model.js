@@ -101,10 +101,14 @@ const OrganizationSchema = new mongoose.Schema({
    */
   location: {
     lat: {
-      type: String,
+      type: Number,
+      required: true,
+      default: 39.676654,
     },
     lng: {
-      type: String,
+      type: Number,
+      required: true,
+      default: -104.962203,
     },
   },
 
