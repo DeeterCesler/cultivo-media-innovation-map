@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import getConfig from 'next/config';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import { OrganizationMapMarker } from './ui';
+
+// We need to read the configuration from the next.config to properly render the map
+const { publicRuntimeConfig } = getConfig();
 
 export default class OrganizationMap extends Component {
   static propTypes = {
@@ -40,6 +44,7 @@ export default class OrganizationMap extends Component {
         {...this.state.viewport}
         id="test"
         onViewportChange={viewport => this.setState({ viewport })}
+        mapboxApiAccessToken={publicRuntimeConfig.mapboxAccessToken}
       >
         {organizations && organizations.length > 0 && organizations.map(organization => (
           <Marker

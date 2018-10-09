@@ -19,4 +19,9 @@ module.exports = {
 
     return config;
   },
+
+  // Publicly accessible acess token provided by mapbox
+  publicRuntimeConfig: {
+    mapboxAccessToken: process.env.MapboxAccessToken,
+  },
 };
