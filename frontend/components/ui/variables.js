@@ -3,6 +3,7 @@ export const colors = {
   gray: '#abb3bd',
   blue: '#28f',
   lightBlue: '#E9F4FF',
+  white: '#fff',
 };
 
 export const fontFamily = '"Cerebri Sans", sans-serif';

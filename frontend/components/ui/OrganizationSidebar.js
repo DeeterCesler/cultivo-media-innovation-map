@@ -10,7 +10,7 @@ export const OrganizationSidebar = styled.div`
 `;
 
 export const OrganizationSidebarWrapper = styled.div`
-  height: calc(100vh - 96px);
-  padding: 40px;
+  height: calc(100vh - 156px);
+  padding: 100px 40px 40px 40px;
   width: 360px;
 `;

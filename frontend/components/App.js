@@ -6,6 +6,8 @@ import OrganizationMap from '../containers/OrganizationMap';
 import OrganizationDirectory from '../containers/OrganizationDirectory';
 import OrganizationDetails from '../containers/OrganizationDetails';
 
+import Navbar from './Navbar';
+
 const OrganizationPanelWrapper = styled.div`
   bottom: 0;
   left: 0;
@@ -18,6 +20,7 @@ const GOOGLE_MAPS_API_KEY = 'AIzaSyDK1dBPOSUadOV-Y-pO1Ke-Yvxs_TYjsq4';
 
 const App = ({ selectedOrganization }) => (
   <Fragment>
+    <Navbar />
     <OrganizationMap
       googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}`}
       loadingElement={<div style={{ height: '100%' }} />}
