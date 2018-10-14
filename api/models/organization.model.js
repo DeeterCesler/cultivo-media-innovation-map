@@ -46,14 +46,14 @@ const OrganizationSchema = new mongoose.Schema({
   /**
    * duAffiliation
    *
-   * string
+   * Array<string>
    *
    * How is the innovation entity connected to DU.
    */
-  duAffiliation: {
+  duAffiliation: [{
     type: String,
     required: true,
-  },
+  }],
 
   /**
    * description

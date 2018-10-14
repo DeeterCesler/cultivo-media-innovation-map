@@ -100,7 +100,7 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
           </Heading>
           <Flex center>
             <CircleLetter>
-              HK
+              {selectedOrganization.name.substring(0, 2)}
             </CircleLetter>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <OrganizationContact>
@@ -135,7 +135,12 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
               </CardTableRowSub>
               <Grow />
               <CardTableRowHead>
-                {selectedOrganization.duAffiliation}
+                {selectedOrganization.duAffiliation.map((affiliation, index) => (
+                  <span>
+                    {affiliation}
+                    {index !== (selectedOrganization.duAffiliation.length - 1) && <span>&#44; </span>}
+                  </span>
+                ))}
               </CardTableRowHead>
             </CardTableRow>
           </div>

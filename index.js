@@ -3,7 +3,6 @@ const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const schedule = require('node-schedule');
 
 // Require the API routes
 const api = require('./api');
@@ -47,11 +46,8 @@ const startup = async () => {
     // Ensure we run tasks when the application starts
     await tasks();
     console.info(`cultivo-media-innovation-map listening on ${PORT}`);
-
-    // Schedule the job to run that the top of the hour, every hour
-    schedule.scheduleJob('0 * * * *', () => {
-      tasks();
-    });
+    // Run all tasks every hour
+    setInterval(tasks, 1000 * 60 * 60);
   });
 };
 

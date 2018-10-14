@@ -32,7 +32,8 @@ export default class OrganizationMap extends Component {
       viewport: {
         ...state.viewport,
         width: window.innerWidth,
-        height: window.innerHeight,
+        // We want to set the height of the map to the window height minus the height of the nav
+        height: window.innerHeight - 60,
       },
     }));
   }
@@ -42,7 +43,6 @@ export default class OrganizationMap extends Component {
     return (
       <ReactMapGL
         {...this.state.viewport}
-        id="test"
         onViewportChange={viewport => this.setState({ viewport })}
         mapboxApiAccessToken={publicRuntimeConfig.mapboxAccessToken}
       >

@@ -18,7 +18,11 @@ const router = new Router();
  */
 router.get('/', async (req, res) => {
   try {
-    const organizations = await OrganizationModel.find({}).select('name duAffiliation location').exec();
+    const organizations = await OrganizationModel
+      .find({})
+      .select('name duAffiliation location')
+      .sort('name')
+      .exec();
     return res.status(200).send(organizations);
   } catch (err) {
     return res.status(err.status || 422).send(err);
