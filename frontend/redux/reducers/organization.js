@@ -5,6 +5,9 @@ import {
   FETCH_ORGANIZATION_REQUEST,
   FETCH_ORGANIZATION_SUCCESS,
   FETCH_ORGANIZATION_FAILURE,
+  FETCH_CATEGORIES_REQUEST,
+  FETCH_CATEGORIES_SUCCESS,
+  FETCH_CATEGORIES_FAILURE,
   DESELECT_ORGANIZATION,
 } from '../actions/organization';
 
@@ -19,6 +22,7 @@ export default function (state = defaultState, action) {
   switch (action.type) {
     case FETCH_ORGANIZATIONS_REQUEST:
     case FETCH_ORGANIZATION_REQUEST:
+    case FETCH_CATEGORIES_REQUEST:
       return {
         ...state,
         loading: true,
@@ -37,8 +41,16 @@ export default function (state = defaultState, action) {
         loaded: true,
         selectedOrganization: action.organization,
       };
+    case FETCH_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        categories: action.categories,
+      };
     case FETCH_ORGANIZATIONS_FAILURE:
     case FETCH_ORGANIZATION_FAILURE:
+    case FETCH_CATEGORIES_FAILURE:
       return {
         ...state,
         loading: false,

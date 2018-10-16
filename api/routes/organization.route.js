@@ -44,6 +44,33 @@ router.get('/:id', async (req, res) => {
 });
 
 /**
+ * GET /api/organizations/categories
+ *
+ * Finds all different types categories (affiliations with DU) that are unique.
+ */
+router.get('/categories', async (req, res) => {
+  const unfilteredCategories = await OrganizationModel.find({}).select('duAffiliation').exec();
+  // Merge the arrays together
+  const mergedCategories = unfilteredCategories
+    // Move to just an array of arrays
+    .map(m => m.duAffiliation.map(e => e.trim()))
+    // Merge arrays together
+    .reduce((a, b) => a.concat(b), [])
+    // Ensure that each one is a non-empty string
+    .filter(String)
+    // Sort them all alphabetically
+    .sort((a, b) => {
+      if (a.toLowerCase() < b.toLowerCase()) return -1;
+      if (a.toLowerCase() > b.toLowerCase()) return 1;
+      return 0;
+    });
+  // Ensure there are no duplicates by creating a set then creating an array
+  const uniqueCategories = [...new Set(mergedCategories)];
+  // Return with the result
+  return res.send(uniqueCategories);
+});
+
+/**
  * POST /api/organizations/:id
  *
  * Updates a single organization that has an _id that matches req.params.id;
