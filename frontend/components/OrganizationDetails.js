@@ -29,13 +29,22 @@ const StyledOrganizationDetails = styled.div`
 const StyledOrganizationDetailsHeader = styled.div`
   background-color: #999;
   border-radius: 8px 8px 0 0;
+  height: 120px;
+  margin: -24px -24px 0 -24px;
+  padding: 24px;
+  .close-button {
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    float: right;
+  }
+`;
+
+const StyledOrganizationDetailsHeaderContent = styled.div`
   color: #fff;
   display: flex;
   flex-direction: column;
-  height: 120px;
+  height: 100%;
   justify-content: flex-end;
-  margin: -24px -24px 0 -24px;
-  padding: 24px;
   h4 {
     font-size: 20px;
     font-weight: 500;
@@ -79,15 +88,17 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
     <OrganizationSidebar>
       <StyledOrganizationDetails>
         <StyledOrganizationDetailsHeader>
-          <p onClick={deselectOrganization}>
+          <p onClick={deselectOrganization} className="close-button">
             Close
           </p>
-          <h4>
-            {selectedOrganization.name}
-          </h4>
-          <p>
-            {selectedOrganization.physicalLocation}
-          </p>
+          <StyledOrganizationDetailsHeaderContent>
+            <h4>
+              {selectedOrganization.name}
+            </h4>
+            <p>
+              {selectedOrganization.physicalLocation}
+            </p>
+          </StyledOrganizationDetailsHeaderContent>
         </StyledOrganizationDetailsHeader>
         <SelectedOrganizationDetailsContent>
           <p>
@@ -100,7 +111,7 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
           </Heading>
           <Flex center>
             <CircleLetter>
-              {selectedOrganization.name.substring(0, 2)}
+              {selectedOrganization.pointOfContact.substring(0, 2)}
             </CircleLetter>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <OrganizationContact>
@@ -138,7 +149,10 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
                 {selectedOrganization.duAffiliation.map((affiliation, index) => (
                   <span>
                     {affiliation}
-                    {index !== (selectedOrganization.duAffiliation.length - 1) && <span>&#44; </span>}
+                    {index !== (selectedOrganization.duAffiliation.length - 1) && (
+                    <span>
+                      &#44;
+                    </span>)}
                   </span>
                 ))}
               </CardTableRowHead>
