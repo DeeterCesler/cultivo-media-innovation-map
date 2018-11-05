@@ -14,6 +14,9 @@ export const FETCH_CATEGORIES_FAILURE = 'organization/FETCH_CATEGORIES_FAILURE';
 
 export const DESELECT_ORGANIZATION = 'organization/DESELECT_ORGANIZATION';
 
+export const SELECT_CATEGORY = 'organization/SELECT_CATEGORY';
+export const DESELECT_CATEGORY = 'organization/DESELECT_CATEGORY';
+
 // ACTIONS FOR FETCHING ALL ORGANIZATIONS
 
 const fetchOrganizationsRequest = () => ({
@@ -87,6 +90,17 @@ export const fetchCategories = () => (dispatch) => {
     .then(categories => dispatch(fetchCategoriesSuccess(categories)))
     .catch(err => dispatch(fetchCategoriesFailure(err)));
 };
+
+// SELECTING/DESELECTING CATEGORIES
+
+export const selectCategory = category => ({
+  type: SELECT_CATEGORY,
+  category,
+});
+
+export const deselectCategory = () => ({
+  type: DESELECT_CATEGORY,
+});
 
 // OTHER ACTIONS
 

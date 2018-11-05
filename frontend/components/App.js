@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import OrganizationMap from '../containers/OrganizationMap';
 import OrganizationDirectory from '../containers/OrganizationDirectory';
 import OrganizationDetails from '../containers/OrganizationDetails';
+import OrganizationCategories from '../containers/OrganizationCategories';
 
 import Navbar from './Navbar';
 
@@ -18,7 +19,7 @@ const OrganizationPanelWrapper = styled.div`
 // Define the key we use to connect to the google maps API with
 const GOOGLE_MAPS_API_KEY = 'AIzaSyDK1dBPOSUadOV-Y-pO1Ke-Yvxs_TYjsq4';
 
-const App = ({ selectedOrganization }) => (
+const App = ({ selectedOrganization, selectedCategory }) => (
   <Fragment>
     <Navbar />
     <OrganizationMap
@@ -28,7 +29,8 @@ const App = ({ selectedOrganization }) => (
       mapElement={<div style={{ height: '100%' }} />}
     />
     <OrganizationPanelWrapper>
-      {!selectedOrganization && <OrganizationDirectory />}
+      {!selectedCategory && <OrganizationCategories />}
+      {selectedCategory && !selectedOrganization && <OrganizationDirectory />}
       {selectedOrganization && <OrganizationDetails />}
     </OrganizationPanelWrapper>
   </Fragment>
@@ -38,10 +40,12 @@ App.propTypes = {
   selectedOrganization: PropTypes.shape({
     name: PropTypes.string,
   }),
+  selectedCategory: PropTypes.string,
 };
 
 App.defaultProps = {
   selectedOrganization: null,
+  selectedCategory: null,
 };
 
 export default App;

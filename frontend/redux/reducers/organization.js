@@ -9,13 +9,17 @@ import {
   FETCH_CATEGORIES_SUCCESS,
   FETCH_CATEGORIES_FAILURE,
   DESELECT_ORGANIZATION,
+  SELECT_CATEGORY,
+  DESELECT_CATEGORY,
 } from '../actions/organization';
 
 const defaultState = {
   loading: false,
   loaded: false,
   organizations: [],
+  categories: [],
   selectedOrganization: null,
+  selectedCategory: null,
 };
 
 export default function (state = defaultState, action) {
@@ -61,6 +65,16 @@ export default function (state = defaultState, action) {
       return {
         ...state,
         selectedOrganization: null,
+      };
+    case SELECT_CATEGORY:
+      return {
+        ...state,
+        selectedCategory: action.category,
+      };
+    case DESELECT_CATEGORY:
+      return {
+        ...state,
+        selectedCategory: null,
       };
     default:
       return state;

@@ -14,10 +14,12 @@ class OrganizationMap extends Component {
     fetchOrganizations: PropTypes.func.isRequired,
     selectOrganization: PropTypes.func.isRequired,
     selectedOrganization: PropTypes.object,
+    selectedCategory: PropTypes.string,
   }
 
   static defaultProps = {
     selectedOrganization: null,
+    selectedCategory: null,
   }
 
   componentDidMount = () => {
@@ -27,11 +29,19 @@ class OrganizationMap extends Component {
   }
 
   render = () => {
-    const { organizations, selectOrganization, selectedOrganization } = this.props;
+    const {
+      organizations, selectOrganization, selectedOrganization, selectedCategory,
+    } = this.props;
+    let filteredOrganizations;
+    if (selectedCategory) {
+      filteredOrganizations = organizations.filter(organization =>
+        organization.innovationCategory === selectedCategory);
+    }
+    // We only want to render the map properly when we're actually viewing organizations
     return (
       <OrganizationMapComponent
         selectedOrganization={selectedOrganization}
-        organizations={organizations}
+        organizations={filteredOrganizations || organizations}
         selectOrganization={selectOrganization}
       />
     );
@@ -39,9 +49,12 @@ class OrganizationMap extends Component {
 }
 
 // The organization map must have all organizations that we wish to render on the map
-const mapStateToProps = ({ organization: { organizations, selectedOrganization } }) => ({
+const mapStateToProps = ({
+  organization: { organizations, selectedOrganization, selectedCategory },
+}) => ({
   organizations,
   selectedOrganization,
+  selectedCategory,
 });
 
 const mapDispatchToProps = {

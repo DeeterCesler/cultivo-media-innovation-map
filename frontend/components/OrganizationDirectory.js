@@ -24,14 +24,43 @@ const OrganizationsList = styled.div`
   }
 `;
 
+const SelectedCategoryHeader = styled.div`
+  color: ${colors.black};
+  font-size: 16px;
+  padding: 16px 0;
+  b {
+    color: ${colors.blue};
+  }
+  span {
+    color: ${colors.gray};
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+`;
+
 const OrganizationDirectory = ({
   organizations,
   loading,
   selectOrganization,
+  selectedCategory,
+  deselectCategory,
 }) => (
   <OrganizationSidebarWrapper>
     <OrganizationSidebar>
       <OrganizationsList>
+        <SelectedCategoryHeader>
+          Selected Category:
+          <b>
+            &nbsp;
+            {selectedCategory}
+          </b>
+          <span onClick={deselectCategory}>
+            Back
+          </span>
+        </SelectedCategoryHeader>
         {organizations
           && organizations.map(organization => (
             <div
@@ -61,6 +90,8 @@ OrganizationDirectory.propTypes = {
   organizations: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
   selectOrganization: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.string.isRequired,
+  deselectCategory: PropTypes.func.isRequired,
 };
 
 OrganizationDirectory.defaultProps = {

@@ -147,7 +147,7 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
               <Grow />
               <CardTableRowHead>
                 {selectedOrganization.duAffiliation.map((affiliation, index) => (
-                  <span>
+                  <span key={affiliation}>
                     {affiliation}
                     {index !== (selectedOrganization.duAffiliation.length - 1) && (
                     <span>

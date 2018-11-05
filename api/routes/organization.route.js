@@ -20,13 +20,38 @@ router.get('/', async (req, res) => {
   try {
     const organizations = await OrganizationModel
       .find({})
-      .select('name duAffiliation location')
+      .select('name duAffiliation location innovationCategory')
       .sort('name')
       .exec();
     return res.status(200).send(organizations);
   } catch (err) {
     return res.status(err.status || 422).send(err);
   }
+});
+
+/**
+ * GET /api/organizations/categories
+ *
+ * Finds all different types categories (affiliations with DU) that are unique.
+ */
+router.get('/categories', async (req, res) => {
+  const unfilteredCategories = await OrganizationModel.find({}).select('innovationCategory').exec();
+  // Merge the arrays together
+  const mergedCategories = unfilteredCategories
+    // Move to just an array of arrays
+    .map(m => m.innovationCategory)
+    // Ensure that each one is a non-empty string
+    .filter(String)
+    // Sort them all alphabetically
+    .sort((a, b) => {
+      if (a.toLowerCase() < b.toLowerCase()) return -1;
+      if (a.toLowerCase() > b.toLowerCase()) return 1;
+      return 0;
+    });
+  // Ensure there are no duplicates by creating a set then creating an array
+  const uniqueCategories = [...new Set(mergedCategories)];
+  // Return with the result
+  return res.send(uniqueCategories);
 });
 
 /**
@@ -41,33 +66,6 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     return res.status(err.status || 422).send(err);
   }
-});
-
-/**
- * GET /api/organizations/categories
- *
- * Finds all different types categories (affiliations with DU) that are unique.
- */
-router.get('/categories', async (req, res) => {
-  const unfilteredCategories = await OrganizationModel.find({}).select('duAffiliation').exec();
-  // Merge the arrays together
-  const mergedCategories = unfilteredCategories
-    // Move to just an array of arrays
-    .map(m => m.duAffiliation.map(e => e.trim()))
-    // Merge arrays together
-    .reduce((a, b) => a.concat(b), [])
-    // Ensure that each one is a non-empty string
-    .filter(String)
-    // Sort them all alphabetically
-    .sort((a, b) => {
-      if (a.toLowerCase() < b.toLowerCase()) return -1;
-      if (a.toLowerCase() > b.toLowerCase()) return 1;
-      return 0;
-    });
-  // Ensure there are no duplicates by creating a set then creating an array
-  const uniqueCategories = [...new Set(mergedCategories)];
-  // Return with the result
-  return res.send(uniqueCategories);
 });
 
 /**

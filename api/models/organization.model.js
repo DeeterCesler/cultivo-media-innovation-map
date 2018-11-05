@@ -125,6 +125,18 @@ const OrganizationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  /**
+   * innovationCategory
+   *
+   * String
+   *
+   * The type of category the innovation organization best fits into. Used for advanced filtering.
+   */
+  innovationCategory: {
+    type: String,
+    required: true,
+  },
 });
 
 // Create a new model using the configured schema
