@@ -15,6 +15,7 @@ import {
   Heading,
   OrganizationSidebar,
   OrganizationSidebarWrapper,
+  BackButton,
 } from './ui';
 
 import { colors } from './ui/variables';
@@ -88,9 +89,9 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
     <OrganizationSidebar>
       <StyledOrganizationDetails>
         <StyledOrganizationDetailsHeader>
-          <p onClick={deselectOrganization} className="close-button">
-            Close
-          </p>
+          <BackButton inverse onClick={deselectOrganization}>
+            Back
+          </BackButton>
           <StyledOrganizationDetailsHeaderContent>
             <h4>
               {selectedOrganization.name}

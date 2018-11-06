@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { OrganizationSidebar, OrganizationSidebarWrapper } from './ui/OrganizationSidebar';
 
 import { colors } from './ui/variables';
+import { BackButton } from './ui';
 
 const OrganizationsList = styled.div`
   height: 100%;
@@ -57,9 +58,9 @@ const OrganizationDirectory = ({
             &nbsp;
             {selectedCategory}
           </b>
-          <span onClick={deselectCategory}>
+          <BackButton onClick={deselectCategory}>
             Back
-          </span>
+          </BackButton>
         </SelectedCategoryHeader>
         {organizations
           && organizations.map(organization => (

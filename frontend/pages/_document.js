@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
             }
             body {
               background-color: #fafafa;
-              font-family: Cerebri Sans, sans-serif;
+              font-family: Inter UI, sans-serif;
               height: 100%;
               margin: 0;
               padding: 0;
@@ -38,6 +38,7 @@ export default class MyDocument extends Document {
             Innovation Map
           </title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />

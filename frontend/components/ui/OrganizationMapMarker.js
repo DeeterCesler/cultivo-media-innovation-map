@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { colors } from './variables';
+
 /**
  * OrganizationMapMarker
  *
@@ -9,7 +11,7 @@ import styled from 'styled-components';
  */
 const OrganizationMapMarker = styled.div`
   align-items: center;
-  background-color: ${props => props.active ? '#fd9735' : '#28f'};
+  background-color: ${({ active }) => active ? colors.orange : colors.blue};
   border: solid 4px #fff;
   border-radius: 100px;
   box-shadow: 0 5px 20px rgba(0,0, 0, .1);

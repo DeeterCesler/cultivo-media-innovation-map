@@ -1,3 +1,4 @@
+export { default as BackButton } from './BackButton';
 export { default as CircleLetter } from './CircleLetter';
 export { Flex, Grow } from './Flex';
 export { default as Heading } from './Heading';

@@ -1,9 +1,12 @@
 export const colors = {
-  black: '#3a3f46',
-  gray: '#abb3bd',
-  blue: '#28f',
-  lightBlue: '#E9F4FF',
   white: '#fff',
+  black: '#374045',
+  gray: '#92a2aa',
+  darkGray: '#5e6e76',
+  snow: '#eaedef',
+  blue: '#33A0D7',
+  orange: '#FC6230',
+  lightBlue: '#D0E4EF',
 };
 
-export const fontFamily = '"Cerebri Sans", sans-serif';
+export const fontFamily = '"Inter UI", sans-serif';
