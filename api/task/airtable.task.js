@@ -45,6 +45,23 @@ const fetchDataFromAirtable = () => new Promise((resolve, reject) => base(AIRTAB
   }));
 
 /**
+ * mapImageFromRecord()
+ *
+ * function
+ *
+ * Maps the record properly (the image record) to a string, if the image exists, otherwise it
+ *  returns null. This is valid, however, since images are not required on the organization model.
+ *
+ * @param {Object} imageData - Data used to map
+ */
+const mapImageFromRecord = (imageData) => {
+  // If it exists, return the url, otherwise just return null
+  if (imageData && imageData[0] && imageData[0].url) return imageData[0].url;
+
+  return null;
+};
+
+/**
  * mapRecordFromAirtable()
  *
  * function
@@ -67,6 +84,7 @@ const mapRecordFromAirtable = record => ({
     lng: record.get('Longitude'),
   },
   innovationCategory: record.get('Category'),
+  image: mapImageFromRecord(record.get('Background Image')),
 });
 
 /**

@@ -137,6 +137,18 @@ const OrganizationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  /**
+   * image
+   *
+   * String
+   *
+   * A url representing an image that can be used as a background image for the innovation resource.
+   */
+  image: {
+    type: String,
+    required: false,
+  },
 });
 
 // Create a new model using the configured schema

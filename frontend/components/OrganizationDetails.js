@@ -28,7 +28,9 @@ const StyledOrganizationDetails = styled.div`
 `;
 
 const StyledOrganizationDetailsHeader = styled.div`
-  background-color: #999;
+  background: ${({ backgroundImage }) => backgroundImage ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})` : '#999'};
+  background-position: center;
+  background-size: cover;
   border-radius: 8px 8px 0 0;
   height: 120px;
   margin: -24px -24px 0 -24px;
@@ -88,7 +90,7 @@ const OrganizationDetails = ({ selectedOrganization, deselectOrganization }) => 
   <OrganizationSidebarWrapper>
     <OrganizationSidebar>
       <StyledOrganizationDetails>
-        <StyledOrganizationDetailsHeader>
+        <StyledOrganizationDetailsHeader backgroundImage={selectedOrganization.image}>
           <BackButton inverse onClick={deselectOrganization}>
             Back
           </BackButton>
