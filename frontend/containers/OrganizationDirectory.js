@@ -9,6 +9,7 @@ import {
 } from '../redux/actions/organization';
 
 import OrganizationDirectoryComponent from '../components/OrganizationDirectory';
+import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
 class OrganizationDirectory extends Component {
   static propTypes = {
@@ -16,8 +17,12 @@ class OrganizationDirectory extends Component {
     fetchOrganizations: PropTypes.func.isRequired,
     selectOrganization: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
-    selectedCategory: PropTypes.string.isRequired,
+    selectedCategory: OrganizationCategoryShape,
     deselectCategory: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    selectedCategory: null,
   }
 
   componentDidMount = () => {
@@ -33,7 +38,7 @@ class OrganizationDirectory extends Component {
     let filteredOrganizations;
     if (selectedCategory) {
       filteredOrganizations = organizations.filter(organization =>
-        organization.innovationCategory === selectedCategory);
+        organization.innovationCategory.identifier === selectedCategory.identifier);
     }
     return (
       <OrganizationDirectoryComponent

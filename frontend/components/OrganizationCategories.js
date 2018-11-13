@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Col, Row } from 'react-grid-system';
 
 import { OrganizationSidebar, OrganizationSidebarWrapper } from './ui';
 import { colors } from './ui/variables';
+
+import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
 const StyledOrganizationCategories = styled.div`
   height: 100%;
@@ -36,23 +39,50 @@ const StyledOrganizationCategoryItem = styled.div`
   }
 `;
 
+const StyledOrganizationCategoryImage = styled.div`
+  align-items: center;
+  background-color: ${({ color }) => color};
+  border-radius: 20px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+  img {
+    height: 20px;
+  }
+`;
+
 const OrganizationCategories = ({ categories, selectCategory }) => (
   <OrganizationSidebarWrapper>
     <OrganizationSidebar>
       <StyledOrganizationCategories>
-        <h4>Categories</h4>
+        <h4>
+          Categories
+        </h4>
         <br />
         {categories && categories.map(category => (
-          <StyledOrganizationCategoryItem onClick={() => selectCategory(category)} key={category}>
-            <span>
-              &rsaquo;
-            </span>
-            <h5>
-              {category}
-            </h5>
-            <p>
-              Lorem ipsum dolor sit amet
-            </p>
+          <StyledOrganizationCategoryItem
+            onClick={() => selectCategory(category)}
+            key={category.identifier}
+          >
+            <Row>
+              <Col xs={2}>
+                <StyledOrganizationCategoryImage color={category.color}>
+                  <img src={`static/category_icons/${category.image}`} alt={category.identifier} />
+                </StyledOrganizationCategoryImage>
+              </Col>
+              <Col xs={10}>
+                <span>
+                  &rsaquo;
+                </span>
+                <h5>
+                  {category.name}
+                </h5>
+                <p>
+                  {category.description}
+                </p>
+              </Col>
+            </Row>
           </StyledOrganizationCategoryItem>
         ))
         }
@@ -62,7 +92,7 @@ const OrganizationCategories = ({ categories, selectCategory }) => (
 );
 
 OrganizationCategories.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categories: PropTypes.arrayOf(OrganizationCategoryShape).isRequired,
   selectCategory: PropTypes.func.isRequired,
 };
 

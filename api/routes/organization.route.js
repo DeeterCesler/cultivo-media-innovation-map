@@ -3,6 +3,9 @@ const { Router } = require('express');
 // Models
 const { OrganizationModel } = require('../models/organization.model');
 
+// Enums
+const OrganizationCategories = require('../enums/organizationCategories.enum');
+
 // Auth
 const { hasOrganizationAccess } = require('../config/auth.config');
 
@@ -34,25 +37,7 @@ router.get('/', async (req, res) => {
  *
  * Finds all different types categories (affiliations with DU) that are unique.
  */
-router.get('/categories', async (req, res) => {
-  const unfilteredCategories = await OrganizationModel.find({}).select('innovationCategory').exec();
-  // Merge the arrays together
-  const mergedCategories = unfilteredCategories
-    // Move to just an array of arrays
-    .map(m => m.innovationCategory)
-    // Ensure that each one is a non-empty string
-    .filter(String)
-    // Sort them all alphabetically
-    .sort((a, b) => {
-      if (a.toLowerCase() < b.toLowerCase()) return -1;
-      if (a.toLowerCase() > b.toLowerCase()) return 1;
-      return 0;
-    });
-  // Ensure there are no duplicates by creating a set then creating an array
-  const uniqueCategories = [...new Set(mergedCategories)];
-  // Return with the result
-  return res.send(uniqueCategories);
-});
+router.get('/categories', (req, res) => res.send(Object.values(OrganizationCategories)));
 
 /**
  * GET /api/organizations/:id

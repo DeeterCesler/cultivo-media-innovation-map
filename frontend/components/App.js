@@ -8,6 +8,7 @@ import OrganizationDetails from '../containers/OrganizationDetails';
 import OrganizationCategories from '../containers/OrganizationCategories';
 
 import Navbar from './Navbar';
+import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
 const OrganizationPanelWrapper = styled.div`
   bottom: 0;
@@ -40,7 +41,7 @@ App.propTypes = {
   selectedOrganization: PropTypes.shape({
     name: PropTypes.string,
   }),
-  selectedCategory: PropTypes.string,
+  selectedCategory: OrganizationCategoryShape,
 };
 
 App.defaultProps = {

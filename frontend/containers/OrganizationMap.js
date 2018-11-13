@@ -8,13 +8,15 @@ import {
   fetchOrganization as fetchOrganizationAction,
 } from '../redux/actions/organization';
 
+import OrganizationCategoryShape from '../shapes/OrganizationCategory';
+
 class OrganizationMap extends Component {
   static propTypes = {
     organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
     fetchOrganizations: PropTypes.func.isRequired,
     selectOrganization: PropTypes.func.isRequired,
     selectedOrganization: PropTypes.object,
-    selectedCategory: PropTypes.string,
+    selectedCategory: OrganizationCategoryShape,
   }
 
   static defaultProps = {
@@ -35,7 +37,7 @@ class OrganizationMap extends Component {
     let filteredOrganizations;
     if (selectedCategory) {
       filteredOrganizations = organizations.filter(organization =>
-        organization.innovationCategory === selectedCategory);
+        organization.innovationCategory.identifier === selectedCategory.identifier);
     }
     // We only want to render the map properly when we're actually viewing organizations
     return (

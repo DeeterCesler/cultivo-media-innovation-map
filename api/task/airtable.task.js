@@ -1,6 +1,7 @@
 const Airtable = require('airtable');
 
 const { OrganizationModel } = require('../models/organization.model');
+const OrganizationCategories = require('../enums/organizationCategories.enum');
 
 // Ensure that we have all proper API variables to connect to Airtable
 if (!process.env.AIRTABLE_API_KEY) {
@@ -62,6 +63,36 @@ const mapImageFromRecord = (imageData) => {
 };
 
 /**
+ * mapInnovationCategoryFromRecord()
+ *
+ * function
+ *
+ * Maps the string innovation category to the object (enum) category.
+ *
+ * @param {String} innovationCategory - A string representing the innovation category to map.
+ */
+const mapInnovationCategoryFromRecord = (innovationCategory) => {
+  switch (innovationCategory) {
+    case 'Capital':
+      return OrganizationCategories.CAPITAL;
+    case 'Clubs & Organizations':
+      return OrganizationCategories.CLUBS_AND_ORGANIZATIONS;
+    case 'Coworking Spaces':
+      return OrganizationCategories.COWORKING_SPACES;
+    case 'Curriculum':
+      return OrganizationCategories.CURRICULUM;
+    case 'Events':
+      return OrganizationCategories.EVENTS;
+    case 'Innovation Partners':
+      return OrganizationCategories.INNOVATION_PARTNERS;
+    case 'Programs & Resources':
+      return OrganizationCategories.PROGRAMS_AND_RESOURCES;
+    default:
+      return null;
+  }
+};
+
+/**
  * mapRecordFromAirtable()
  *
  * function
@@ -83,7 +114,7 @@ const mapRecordFromAirtable = record => ({
     lat: record.get('Latitude'),
     lng: record.get('Longitude'),
   },
-  innovationCategory: record.get('Category'),
+  innovationCategory: mapInnovationCategoryFromRecord(record.get('Category')),
   image: mapImageFromRecord(record.get('Background Image')),
 });
 

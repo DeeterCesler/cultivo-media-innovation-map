@@ -129,12 +129,12 @@ const OrganizationSchema = new mongoose.Schema({
   /**
    * innovationCategory
    *
-   * String
+   * Object
    *
    * The type of category the innovation organization best fits into. Used for advanced filtering.
    */
   innovationCategory: {
-    type: String,
+    type: Object,
     required: true,
   },
 

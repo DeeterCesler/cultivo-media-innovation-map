@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { OrganizationSidebar, OrganizationSidebarWrapper } from './ui/OrganizationSidebar';
 
+import OrganizationCategoryShape from '../shapes/OrganizationCategory';
+
 import { colors } from './ui/variables';
 import { BackButton } from './ui';
 
@@ -56,7 +58,7 @@ const OrganizationDirectory = ({
           Selected Category:
           <b>
             &nbsp;
-            {selectedCategory}
+            {selectedCategory.name}
           </b>
           <BackButton onClick={deselectCategory}>
             Back
@@ -91,7 +93,7 @@ OrganizationDirectory.propTypes = {
   organizations: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
   selectOrganization: PropTypes.func.isRequired,
-  selectedCategory: PropTypes.string.isRequired,
+  selectedCategory: OrganizationCategoryShape.isRequired,
   deselectCategory: PropTypes.func.isRequired,
 };
 

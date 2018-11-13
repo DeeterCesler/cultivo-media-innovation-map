@@ -9,9 +9,11 @@ import {
 
 import OrganizationCategoriesComponent from '../components/OrganizationCategories';
 
+import OrganizationCategoryShape from '../shapes/OrganizationCategory';
+
 class OrganizationCategories extends Component {
   static propTypes = {
-    categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+    categories: PropTypes.arrayOf(OrganizationCategoryShape).isRequired,
     fetchCategories: PropTypes.func.isRequired,
     selectCategory: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
