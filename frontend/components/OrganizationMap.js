@@ -54,7 +54,7 @@ export default class OrganizationMap extends Component {
           >
             <OrganizationMapMarker
               onClick={() => selectOrganization(organization._id)}
-              active={selectedOrganization && organization._id === selectedOrganization._id}
+              color={selectedOrganization && organization._id === selectedOrganization._id ? organization.innovationCategory.color : organization.innovationCategory.bgColor}
             >
               {/* The first two characters of the organization's name */}
               {organization.name.substring(0, 2)}

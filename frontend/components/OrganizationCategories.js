@@ -67,7 +67,7 @@ const OrganizationCategories = ({ categories, selectCategory }) => (
           >
             <Row>
               <Col xs={2}>
-                <StyledOrganizationCategoryImage color={category.color}>
+                <StyledOrganizationCategoryImage color={category.bgColor}>
                   <img src={`static/category_icons/${category.image}`} alt={category.identifier} />
                 </StyledOrganizationCategoryImage>
               </Col>
