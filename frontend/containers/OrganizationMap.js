@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import OrganizationMapComponent from '../components/OrganizationMap';
 
 import {
-  fetchOrganization as fetchOrganizationsAction,
+  fetchOrganizations as fetchOrganizationsAction,
   fetchOrganization as fetchOrganizationAction,
 } from '../redux/actions/organization';
 

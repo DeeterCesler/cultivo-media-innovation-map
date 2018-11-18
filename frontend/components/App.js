@@ -37,11 +37,7 @@ const DuLogo = styled.div`
 const App = ({ selectedOrganization }) => (
   <Fragment>
     <Navbar />
-    <OrganizationMap
-      loadingElement={<div style={{ height: '100%' }} />}
-      containerElement={<div style={{ height: '100vh' }} />}
-      mapElement={<div style={{ height: '100%' }} />}
-    />
+    <OrganizationMap />
     <DuLogo>
       <img src="../static/du_logo.svg" alt="DU Logo" />
     </DuLogo>
