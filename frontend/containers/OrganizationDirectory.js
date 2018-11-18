@@ -19,10 +19,12 @@ class OrganizationDirectory extends Component {
     loading: PropTypes.bool.isRequired,
     selectedCategory: OrganizationCategoryShape,
     deselectCategory: PropTypes.func.isRequired,
+    searchInputValue: PropTypes.string,
   }
 
   static defaultProps = {
     selectedCategory: null,
+    searchInputValue: null,
   }
 
   componentDidMount = () => {
@@ -33,16 +35,29 @@ class OrganizationDirectory extends Component {
 
   render = () => {
     const {
-      organizations, loading, selectOrganization, selectedCategory, deselectCategory,
+      organizations,
+      loading,
+      selectOrganization,
+      selectedCategory,
+      deselectCategory,
+      searchInputValue,
     } = this.props;
-    let filteredOrganizations;
+    // We assign an empty array of filters that we push into as necessary
+    let filteredOrganizations = organizations;
+
+    // If there is a selected category, add it to the filter
     if (selectedCategory) {
-      filteredOrganizations = organizations.filter(organization =>
+      filteredOrganizations = filteredOrganizations.filter(organization =>
         organization.innovationCategory.identifier === selectedCategory.identifier);
+    }
+    // If there is a search input value, add it to the filter
+    if (searchInputValue) {
+      filteredOrganizations = filteredOrganizations.filter(organization =>
+        organization.name.toLowerCase().includes(searchInputValue));
     }
     return (
       <OrganizationDirectoryComponent
-        organizations={filteredOrganizations || organizations}
+        organizations={filteredOrganizations}
         loading={loading}
         selectOrganization={selectOrganization}
         selectedCategory={selectedCategory}

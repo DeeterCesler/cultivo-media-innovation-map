@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Col, Row } from 'react-grid-system';
 
-import { OrganizationSidebar, OrganizationSidebarWrapper } from './ui';
 import { colors } from './ui/variables';
 
 import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
 const StyledOrganizationCategories = styled.div`
-  height: 100%;
+  flex-grow: 1;
   overflow-y: scroll;
   h4 {
     color: ${colors.black};
@@ -53,42 +52,38 @@ const StyledOrganizationCategoryImage = styled.div`
 `;
 
 const OrganizationCategories = ({ categories, selectCategory }) => (
-  <OrganizationSidebarWrapper>
-    <OrganizationSidebar>
-      <StyledOrganizationCategories>
-        <h4>
-          Categories
-        </h4>
-        <br />
-        {categories && categories.map(category => (
-          <StyledOrganizationCategoryItem
-            onClick={() => selectCategory(category)}
-            key={category.identifier}
-          >
-            <Row>
-              <Col xs={2}>
-                <StyledOrganizationCategoryImage color={category.bgColor}>
-                  <img src={`static/category_icons/${category.image}`} alt={category.identifier} />
-                </StyledOrganizationCategoryImage>
-              </Col>
-              <Col xs={10}>
-                <span>
-                  &rsaquo;
-                </span>
-                <h5>
-                  {category.name}
-                </h5>
-                <p>
-                  {category.description}
-                </p>
-              </Col>
-            </Row>
-          </StyledOrganizationCategoryItem>
-        ))
-        }
-      </StyledOrganizationCategories>
-    </OrganizationSidebar>
-  </OrganizationSidebarWrapper>
+  <StyledOrganizationCategories>
+    <h4>
+      Categories
+    </h4>
+    <br />
+    {categories && categories.map(category => (
+      <StyledOrganizationCategoryItem
+        onClick={() => selectCategory(category)}
+        key={category.identifier}
+      >
+        <Row>
+          <Col xs={2}>
+            <StyledOrganizationCategoryImage color={category.bgColor}>
+              <img src={`static/category_icons/${category.image}`} alt={category.identifier} />
+            </StyledOrganizationCategoryImage>
+          </Col>
+          <Col xs={10}>
+            <span>
+              &rsaquo;
+            </span>
+            <h5>
+              {category.name}
+            </h5>
+            <p>
+              {category.description}
+            </p>
+          </Col>
+        </Row>
+      </StyledOrganizationCategoryItem>
+    ))
+    }
+  </StyledOrganizationCategories>
 );
 
 OrganizationCategories.propTypes = {

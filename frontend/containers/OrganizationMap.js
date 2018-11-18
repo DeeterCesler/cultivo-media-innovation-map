@@ -17,11 +17,13 @@ class OrganizationMap extends Component {
     selectOrganization: PropTypes.func.isRequired,
     selectedOrganization: PropTypes.object,
     selectedCategory: OrganizationCategoryShape,
+    searchInputValue: PropTypes.string,
   }
 
   static defaultProps = {
     selectedOrganization: null,
     selectedCategory: null,
+    searchInputValue: null,
   }
 
   componentDidMount = () => {
@@ -32,18 +34,23 @@ class OrganizationMap extends Component {
 
   render = () => {
     const {
-      organizations, selectOrganization, selectedOrganization, selectedCategory,
+      organizations, selectOrganization, selectedOrganization, selectedCategory, searchInputValue,
     } = this.props;
-    let filteredOrganizations;
+    let filteredOrganizations = organizations;
     if (selectedCategory) {
-      filteredOrganizations = organizations.filter(organization =>
+      filteredOrganizations = filteredOrganizations.filter(organization =>
         organization.innovationCategory.identifier === selectedCategory.identifier);
+    }
+    // If there is a search input value, add it to the filter
+    if (searchInputValue) {
+      filteredOrganizations = filteredOrganizations.filter(organization =>
+        organization.name.toLowerCase().includes(searchInputValue));
     }
     // We only want to render the map properly when we're actually viewing organizations
     return (
       <OrganizationMapComponent
         selectedOrganization={selectedOrganization}
-        organizations={filteredOrganizations || organizations}
+        organizations={filteredOrganizations}
         selectOrganization={selectOrganization}
       />
     );
@@ -52,11 +59,14 @@ class OrganizationMap extends Component {
 
 // The organization map must have all organizations that we wish to render on the map
 const mapStateToProps = ({
-  organization: { organizations, selectedOrganization, selectedCategory },
+  organization: {
+    organizations, selectedOrganization, selectedCategory, searchInputValue,
+  },
 }) => ({
   organizations,
   selectedOrganization,
   selectedCategory,
+  searchInputValue,
 });
 
 const mapDispatchToProps = {

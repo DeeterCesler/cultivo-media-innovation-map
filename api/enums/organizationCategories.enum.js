@@ -8,7 +8,7 @@
 module.exports = {
   CAPITAL: {
     name: 'Capital',
-    description: 'Lorem ipsum dolor sit amet',
+    description: 'Education about and access to venture funding',
     image: 'capital.svg',
     identifier: 'capital',
     color: '#7B3F23',
@@ -16,7 +16,7 @@ module.exports = {
   },
   CLUBS_AND_ORGANIZATIONS: {
     name: 'Clubs & Organizations',
-    description: 'Lorem ipsum dolor sit amet',
+    description: 'DU student clubs and Denver-based non-profits',
     image: 'clubsAndOrganizations.svg',
     identifier: 'clubs_and_organizations',
     color: '#7D6D26',
@@ -24,7 +24,7 @@ module.exports = {
   },
   COWORKING_SPACES: {
     name: 'Coworking Spaces',
-    description: 'Lorem ipsum dolor sit amet',
+    description: 'Places to work and venues to host events',
     image: 'coworkingSpaces.svg',
     identifier: 'coworking_spaces',
     color: '#5D7C26',
@@ -32,7 +32,7 @@ module.exports = {
   },
   CURRICULUM: {
     name: 'Curriculum',
-    description: 'Lorem ipsum dolor sit amet',
+    description: 'Classes, advising, and academic resources',
     image: 'curriculum.svg',
     identifier: 'curriculum',
     color: '#257D6E',
@@ -40,7 +40,7 @@ module.exports = {
   },
   EVENTS: {
     name: 'Events',
-    description: 'Lorem ipsum dolor sit amet',
+    description: 'Places to meet, learn, and collaborate',
     image: 'events.svg',
     identifier: 'events',
     color: '#225D7B',
@@ -48,7 +48,7 @@ module.exports = {
   },
   INNOVATION_PARTNERS: {
     name: 'Innovation Partners',
-    description: 'Lorem ipsum dolor sit amet',
+    description: 'Awesome organizations dedicated to innovation',
     image: 'innovationPartners.svg',
     identifier: 'innovation_partners',
     color: '#3F237A',
@@ -56,7 +56,7 @@ module.exports = {
   },
   PROGRAMS_AND_RESOURCES: {
     name: 'Programs & Resources',
-    description: 'Lorem ipsum dolor sit amet',
+    description: 'Learn, engage, and utilize',
     image: 'programsAndResources.svg',
     identifier: 'programsAndResources',
     color: '#7B225C',

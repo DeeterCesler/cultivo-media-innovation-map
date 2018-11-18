@@ -39,6 +39,10 @@ export default class MyDocument extends Document {
           </title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet" />
+          <link
+            href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

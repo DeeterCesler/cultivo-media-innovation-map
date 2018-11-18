@@ -14,3 +14,9 @@ export const OrganizationSidebarWrapper = styled.div`
   padding: 100px 40px 40px 40px;
   width: 360px;
 `;
+
+export const OrganizationSidebarInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;

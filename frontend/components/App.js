@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import OrganizationMap from '../containers/OrganizationMap';
-import OrganizationDirectory from '../containers/OrganizationDirectory';
 import OrganizationDetails from '../containers/OrganizationDetails';
-import OrganizationCategories from '../containers/OrganizationCategories';
+import OrganizationSearchWrapper from '../containers/OrganizationSearchWrapper';
 
 import Navbar from './Navbar';
-import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
+/**
+ * OrganizationPanelWrapper
+ *
+ * Wrapper that handles the left section that holds info/directory/categories.
+ */
 const OrganizationPanelWrapper = styled.div`
   bottom: 0;
   left: 0;
@@ -17,21 +20,33 @@ const OrganizationPanelWrapper = styled.div`
   top: 0;
 `;
 
-// Define the key we use to connect to the google maps API with
-const GOOGLE_MAPS_API_KEY = 'AIzaSyDK1dBPOSUadOV-Y-pO1Ke-Yvxs_TYjsq4';
+/**
+ * DuLogo
+ *
+ * Used to absolutely position the DU logo in the bottom right corner.
+ */
+const DuLogo = styled.div`
+  bottom: 20px;
+  position: absolute;
+  right: 20px;
+  img {
+    height: 40px;
+  }
+`;
 
-const App = ({ selectedOrganization, selectedCategory }) => (
+const App = ({ selectedOrganization }) => (
   <Fragment>
     <Navbar />
     <OrganizationMap
-      googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}`}
       loadingElement={<div style={{ height: '100%' }} />}
       containerElement={<div style={{ height: '100vh' }} />}
       mapElement={<div style={{ height: '100%' }} />}
     />
+    <DuLogo>
+      <img src="../static/du_logo.svg" alt="DU Logo" />
+    </DuLogo>
     <OrganizationPanelWrapper>
-      {!selectedCategory && <OrganizationCategories />}
-      {selectedCategory && !selectedOrganization && <OrganizationDirectory />}
+      {!selectedOrganization && <OrganizationSearchWrapper />}
       {selectedOrganization && <OrganizationDetails />}
     </OrganizationPanelWrapper>
   </Fragment>
@@ -41,12 +56,10 @@ App.propTypes = {
   selectedOrganization: PropTypes.shape({
     name: PropTypes.string,
   }),
-  selectedCategory: OrganizationCategoryShape,
 };
 
 App.defaultProps = {
   selectedOrganization: null,
-  selectedCategory: null,
 };
 
 export default App;

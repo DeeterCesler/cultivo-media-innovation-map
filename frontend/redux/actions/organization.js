@@ -16,6 +16,7 @@ export const DESELECT_ORGANIZATION = 'organization/DESELECT_ORGANIZATION';
 
 export const SELECT_CATEGORY = 'organization/SELECT_CATEGORY';
 export const DESELECT_CATEGORY = 'organization/DESELECT_CATEGORY';
+export const UPDATE_SEARCH_INPUT_VALUE = 'organization/UPDATE_SEARCH_INPUT_VALUE';
 
 // ACTIONS FOR FETCHING ALL ORGANIZATIONS
 
@@ -106,4 +107,9 @@ export const deselectCategory = () => ({
 
 export const deselectOrganization = () => ({
   type: DESELECT_ORGANIZATION,
+});
+
+export const updateSearchInput = value => ({
+  type: UPDATE_SEARCH_INPUT_VALUE,
+  value,
 });

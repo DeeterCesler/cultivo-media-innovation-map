@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import getConfig from 'next/config';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
 import { OrganizationMapMarker } from './ui';
 
 // We need to read the configuration from the next.config to properly render the map
@@ -46,6 +46,9 @@ export default class OrganizationMap extends Component {
         onViewportChange={viewport => this.setState({ viewport })}
         mapboxApiAccessToken={publicRuntimeConfig.mapboxAccessToken}
       >
+        <div style={{ position: 'absolute', right: 20, top: 20 }}>
+          <NavigationControl onViewportChange={viewport => this.setState({ viewport })} />
+        </div>
         {organizations && organizations.length > 0 && organizations.map(organization => (
           <Marker
             key={organization._id}
@@ -54,7 +57,8 @@ export default class OrganizationMap extends Component {
           >
             <OrganizationMapMarker
               onClick={() => selectOrganization(organization._id)}
-              color={selectedOrganization && organization._id === selectedOrganization._id ? organization.innovationCategory.color : organization.innovationCategory.bgColor}
+              color={selectedOrganization && organization._id === selectedOrganization._id
+                ? organization.innovationCategory.color : organization.innovationCategory.bgColor}
             >
               {/* The first two characters of the organization's name */}
               {organization.name.substring(0, 2)}

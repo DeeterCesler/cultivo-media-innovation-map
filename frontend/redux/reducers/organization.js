@@ -11,6 +11,7 @@ import {
   DESELECT_ORGANIZATION,
   SELECT_CATEGORY,
   DESELECT_CATEGORY,
+  UPDATE_SEARCH_INPUT_VALUE,
 } from '../actions/organization';
 
 const defaultState = {
@@ -75,6 +76,11 @@ export default function (state = defaultState, action) {
       return {
         ...state,
         selectedCategory: null,
+      };
+    case UPDATE_SEARCH_INPUT_VALUE:
+      return {
+        ...state,
+        searchInputValue: action.value,
       };
     default:
       return state;

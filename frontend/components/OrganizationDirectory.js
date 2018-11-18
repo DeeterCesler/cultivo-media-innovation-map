@@ -2,15 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { OrganizationSidebar, OrganizationSidebarWrapper } from './ui/OrganizationSidebar';
-
 import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
 import { colors } from './ui/variables';
 import { BackButton } from './ui';
 
 const OrganizationsList = styled.div`
-  height: 100%;
+  flex-grow: 1;
   overflow-y: scroll;
   .organization-list-item {
     cursor: pointer;
@@ -51,54 +49,52 @@ const OrganizationDirectory = ({
   selectedCategory,
   deselectCategory,
 }) => (
-  <OrganizationSidebarWrapper>
-    <OrganizationSidebar>
-      <OrganizationsList>
-        <SelectedCategoryHeader>
-          Selected Category:
-          <b>
-            &nbsp;
-            {selectedCategory.name}
-          </b>
-          <BackButton onClick={deselectCategory}>
-            Back
-          </BackButton>
-        </SelectedCategoryHeader>
-        {organizations
-          && organizations.map(organization => (
-            <div
-              key={organization._id} // eslint-disable-line
-              onClick={() => selectOrganization(organization._id)}
-              className="organization-list-item"
-            >
-              <p>
-                {organization.name}
-              </p>
-              <small>
-                {organization.duAffiliation}
-              </small>
-            </div>
-          ))}
-      </OrganizationsList>
-      {loading && (
-      <p>
-        Currently loading...
-      </p>
-      )}
-    </OrganizationSidebar>
-  </OrganizationSidebarWrapper>
+  <OrganizationsList>
+    {loading && (
+    <p>
+      Currently loading...
+    </p>
+    )}
+    {selectedCategory && (
+    <SelectedCategoryHeader>
+      Selected Category:
+      <b>
+        &nbsp;
+        {selectedCategory.name}
+      </b>
+      <BackButton onClick={deselectCategory}>
+        Back
+      </BackButton>
+    </SelectedCategoryHeader>)}
+    {organizations
+      && organizations.map(organization => (
+        <div
+          key={organization._id} // eslint-disable-line
+          onClick={() => selectOrganization(organization._id)}
+          className="organization-list-item"
+        >
+          <p>
+            {organization.name}
+          </p>
+          <small>
+            {organization.duAffiliation}
+          </small>
+        </div>
+      ))}
+  </OrganizationsList>
 );
 
 OrganizationDirectory.propTypes = {
   organizations: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
   selectOrganization: PropTypes.func.isRequired,
-  selectedCategory: OrganizationCategoryShape.isRequired,
+  selectedCategory: OrganizationCategoryShape,
   deselectCategory: PropTypes.func.isRequired,
 };
 
 OrganizationDirectory.defaultProps = {
   organizations: [],
+  selectedCategory: null,
 };
 
 export default OrganizationDirectory;
