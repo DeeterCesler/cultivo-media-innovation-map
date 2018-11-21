@@ -62,7 +62,8 @@ export default class OrganizationMap extends Component {
   componentWillReceiveProps = (nextProps) => {
     // If the selected organization does not match the currently selected organization, we want to
     // change the center of the map
-    if (this.props.selectedOrganization !== nextProps.selectedOrganization) {
+    if (this.props.selectedOrganization !== nextProps.selectedOrganization
+      && nextProps.selectedOrganization && nextProps.selectedOrganization.location) {
       // Reset the center of the map
       this.setState(state => ({
         ...state,
