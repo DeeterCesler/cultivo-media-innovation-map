@@ -7,6 +7,15 @@ import { OrganizationMapMarker } from './ui';
 // We need to read the configuration from the next.config to properly render the map
 const { publicRuntimeConfig } = getConfig();
 
+/**
+ * DEFAULT_ZOOM
+ *
+ * The default amount of zoom we want to use when the map renders.
+ *
+ * @type {number}
+ */
+const DEFAULT_ZOOM = 14;
+
 export default class OrganizationMap extends Component {
   static propTypes = {
     organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -22,7 +31,7 @@ export default class OrganizationMap extends Component {
     viewport: {
       latitude: 39.676654,
       longitude: -104.962203,
-      zoom: 14,
+      zoom: DEFAULT_ZOOM,
     },
   }
 
@@ -38,8 +47,30 @@ export default class OrganizationMap extends Component {
     }));
   }
 
+  /**
+   * selectOrg()
+   *
+   * function
+   *
+   * Selects a single organization. This does two things:
+   * 1. Recenters the map on the organization.
+   * 2. Sends a redux action to select an organization.
+   */
+  selectOrg = (organization) => {
+    this.setState(state => ({
+      ...state,
+      viewport: {
+        ...state.viewport,
+        latitude: organization.location.lat,
+        longitude: organization.location.lng,
+        zoom: DEFAULT_ZOOM,
+      },
+    }));
+    this.props.selectOrganization(organization._id);
+  }
+
   render = () => {
-    const { organizations, selectOrganization, selectedOrganization } = this.props;
+    const { organizations, selectedOrganization } = this.props;
     return (
       <ReactMapGL
         {...this.state.viewport}
@@ -56,7 +87,7 @@ export default class OrganizationMap extends Component {
             longitude={organization.location.lng}
           >
             <OrganizationMapMarker
-              onClick={() => selectOrganization(organization._id)}
+              onClick={() => this.selectOrg(organization)}
               color={selectedOrganization && organization._id === selectedOrganization._id
                 ? organization.innovationCategory.color : organization.innovationCategory.bgColor}
             >
