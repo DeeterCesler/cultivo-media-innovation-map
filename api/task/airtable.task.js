@@ -87,6 +87,8 @@ const mapInnovationCategoryFromRecord = (innovationCategory) => {
       return OrganizationCategories.INNOVATION_PARTNERS;
     case 'Programs & Resources':
       return OrganizationCategories.PROGRAMS_AND_RESOURCES;
+    case 'Meetups':
+      return OrganizationCategories.MEETUPS;
     default:
       return null;
   }

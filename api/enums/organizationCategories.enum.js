@@ -62,4 +62,12 @@ module.exports = {
     color: '#7B225C',
     bgColor: '#e7d3e0',
   },
+  MEETUPS: {
+    name: 'Meetups',
+    description: 'Meet with other individuals in the community',
+    image: 'meetups.svg',
+    identifier: 'meetups',
+    color: '#7c1f2d',
+    bgColor: '#e8d3d6',
+  },
 };
