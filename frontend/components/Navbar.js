@@ -1,22 +1,21 @@
 import React from 'react';
 
-import { Flex, Grow } from 'du-board-design-system';
+import { Grow } from 'du-board-design-system';
 
 import StyledNavbar from './ui/Navbar';
 
 const Navbar = () => (
   <StyledNavbar>
-    <Flex>
-      <h3>
-        <span style={{ color: 'rgba(255, 255, 255, .7)' }}>
-          Project X-ITE
-        </span>
-        &nbsp;
-        <b>
-          Innovation Map
-        </b>
-      </h3>
-    </Flex>
+    <img src="static/xite_logo.png" alt="x-ite logo" />
+    <h3>
+      <span style={{ color: 'rgba(255, 255, 255, .7)' }}>
+        Project X-ITE
+      </span>
+      &nbsp;
+      <b>
+        Innovation Map
+      </b>
+    </h3>
     <Grow />
     <a href="http://www.projectxite.org/" style={{ textDecoration: 'none', color: 'rgba(255, 255, 255, .7)' }}>
       Back to Project X-ITE
