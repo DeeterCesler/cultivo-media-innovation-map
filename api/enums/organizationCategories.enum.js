@@ -9,7 +9,7 @@ module.exports = {
   CAPITAL: {
     name: 'Capital',
     description: 'Education about and access to venture funding',
-    image: 'capital.svg',
+    image: 'capital',
     identifier: 'capital',
     color: '#7B3F23',
     bgColor: '#e5d7cf',
@@ -17,7 +17,7 @@ module.exports = {
   CLUBS_AND_ORGANIZATIONS: {
     name: 'Clubs & Organizations',
     description: 'DU student clubs and Denver-based non-profits',
-    image: 'clubsAndOrganizations.svg',
+    image: 'clubsAndOrganizations',
     identifier: 'clubs_and_organizations',
     color: '#7D6D26',
     bgColor: '#e2dec9',
@@ -25,7 +25,7 @@ module.exports = {
   COWORKING_SPACES: {
     name: 'Coworking Spaces',
     description: 'Places to work and venues to host events',
-    image: 'coworkingSpaces.svg',
+    image: 'coworkingSpaces',
     identifier: 'coworking_spaces',
     color: '#5D7C26',
     bgColor: '#d9e2c9',
@@ -33,7 +33,7 @@ module.exports = {
   CURRICULUM: {
     name: 'Curriculum',
     description: 'Classes, advising, and academic resources',
-    image: 'curriculum.svg',
+    image: 'curriculum',
     identifier: 'curriculum',
     color: '#257D6E',
     bgColor: '#cbe3df',
@@ -41,7 +41,7 @@ module.exports = {
   EVENTS: {
     name: 'Events',
     description: 'Places to meet, learn, and collaborate',
-    image: 'events.svg',
+    image: 'events',
     identifier: 'events',
     color: '#225D7B',
     bgColor: '#cedde5',
@@ -49,7 +49,7 @@ module.exports = {
   INNOVATION_PARTNERS: {
     name: 'Innovation Partners',
     description: 'Awesome organizations dedicated to innovation',
-    image: 'innovationPartners.svg',
+    image: 'innovationPartners',
     identifier: 'innovation_partners',
     color: '#3F237A',
     bgColor: '#dbd4e8',
@@ -57,7 +57,7 @@ module.exports = {
   PROGRAMS_AND_RESOURCES: {
     name: 'Programs & Resources',
     description: 'Learn, engage, and utilize',
-    image: 'programsAndResources.svg',
+    image: 'programsAndResources',
     identifier: 'programsAndResources',
     color: '#7B225C',
     bgColor: '#e7d3e0',
@@ -65,7 +65,7 @@ module.exports = {
   MEETUPS: {
     name: 'Meetups',
     description: 'Meet with other individuals in the community',
-    image: 'meetups.svg',
+    image: 'meetups',
     identifier: 'meetups',
     color: '#7c1f2d',
     bgColor: '#e8d3d6',

@@ -20,6 +20,9 @@ const OrganizationMapMarker = styled.div`
   height: 40px;
   justify-content: center;
   width: 40px;
+  img {
+    height: 20px;
+  }
 `;
 
 export default OrganizationMapMarker;

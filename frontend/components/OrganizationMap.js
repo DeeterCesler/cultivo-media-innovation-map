@@ -99,7 +99,9 @@ export default class OrganizationMap extends Component {
                 ? organization.innovationCategory.color : organization.innovationCategory.bgColor}
             >
               {/* The first two characters of the organization's name */}
-              {organization.name.substring(0, 2)}
+              {selectedOrganization && organization._id === selectedOrganization._id
+                ? <img src={`static/category_icons/${organization.innovationCategory.image}_white.svg`} alt={organization.innovationCategory.name} />
+                : <img src={`static/category_icons/${organization.innovationCategory.image}.svg`} alt={organization.innovationCategory.name} />}
             </OrganizationMapMarker>
           </Marker>
         ))}
