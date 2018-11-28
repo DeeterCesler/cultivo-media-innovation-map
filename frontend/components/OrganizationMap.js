@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import getConfig from 'next/config';
 import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
-import { OrganizationMapMarker } from './ui';
+import { OrganizationMapMarker, RealignMapMarker, RealignMapMarkerContainer } from './ui';
 
 // We need to read the configuration from the next.config to properly render the map
 const { publicRuntimeConfig } = getConfig();
@@ -24,6 +24,18 @@ const DEFAULT_ZOOM = 14;
  * @type {{latitude: number, longitude: number}}
  */
 const DEFAULT_DU_COORDINATES = {
+  latitude: 39.7392358,
+  longitude: -104.990251,
+};
+
+/**
+ * DEFAULT_DU_COORDINATES
+ *
+ * Default coordinates that pertain to the location of central Denver.
+ *
+ * @type {{latitude: number, longitude: number}}
+ */
+const DEFAULT_DENVER_COORDINATES = {
   latitude: 39.676654,
   longitude: -104.962203,
 };
@@ -76,6 +88,38 @@ export default class OrganizationMap extends Component {
     }
   }
 
+  /**
+   * changeCenterLocation()
+   *
+   * function
+   *
+   * Allows us to realign the map to a new center. Moves us to either Denver or DU.
+   */
+  changeCenterLocation = (newCenter) => {
+    switch (newCenter) {
+      case 'DU':
+        this.setState(state => ({
+          ...state,
+          viewport: {
+            ...state.viewport,
+            ...DEFAULT_DU_COORDINATES,
+          },
+        }));
+        break;
+      case 'Denver':
+        this.setState(state => ({
+          ...state,
+          viewport: {
+            ...state.viewport,
+            ...DEFAULT_DENVER_COORDINATES,
+          },
+        }));
+        break;
+      default:
+        break;
+    }
+  }
+
   render = () => {
     const { organizations, selectOrganization, selectedOrganization } = this.props;
     return (
@@ -87,6 +131,15 @@ export default class OrganizationMap extends Component {
         <div style={{ position: 'absolute', right: 20, top: 20 }}>
           <NavigationControl onViewportChange={viewport => this.setState({ viewport })} />
         </div>
+        <RealignMapMarkerContainer>
+          <RealignMapMarker onClick={() => this.changeCenterLocation('Denver')}>
+            View DU
+          </RealignMapMarker>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <RealignMapMarker onClick={() => this.changeCenterLocation('DU')}>
+            View Denver
+          </RealignMapMarker>
+        </RealignMapMarkerContainer>
         {organizations && organizations.length > 0 && organizations.map(organization => (
           <Marker
             key={organization._id}
