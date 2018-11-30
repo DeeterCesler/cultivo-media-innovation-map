@@ -21,6 +21,7 @@ const defaultState = {
   categories: [],
   selectedOrganization: null,
   selectedCategory: null,
+  searchInputValue: '',
 };
 
 export default function (state = defaultState, action) {
@@ -76,6 +77,7 @@ export default function (state = defaultState, action) {
       return {
         ...state,
         selectedCategory: null,
+        searchInputValue: '',
       };
     case UPDATE_SEARCH_INPUT_VALUE:
       return {

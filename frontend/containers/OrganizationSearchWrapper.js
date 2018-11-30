@@ -26,9 +26,9 @@ const OrganizationSearchWrapper = ({
       <OrganizationSidebarInner>
         <StyledSearchWrapper>
           <SearchInput />
-          {(!searchInputValue && !selectedCategory && !selectedOrganization)
+          {(searchInputValue === '' && !selectedCategory && !selectedOrganization)
             && <OrganizationCategories />}
-          {(searchInputValue || (selectedCategory && !selectedOrganization))
+          {(searchInputValue !== '' || (selectedCategory && !selectedOrganization))
             && <OrganizationDirectory searchInputValue={searchInputValue} />}
         </StyledSearchWrapper>
       </OrganizationSidebarInner>

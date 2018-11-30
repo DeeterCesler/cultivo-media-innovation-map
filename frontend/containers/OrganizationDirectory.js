@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import {
   fetchOrganizations as fetchOrganizationsAction,
   fetchOrganization as fetchOrganizationAction,
-  deselectCategory as deselectCategoryAction,
 } from '../redux/actions/organization';
 
 import OrganizationDirectoryComponent from '../components/OrganizationDirectory';
@@ -18,7 +17,6 @@ class OrganizationDirectory extends Component {
     selectOrganization: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     selectedCategory: OrganizationCategoryShape,
-    deselectCategory: PropTypes.func.isRequired,
     searchInputValue: PropTypes.string,
   }
 
@@ -39,21 +37,28 @@ class OrganizationDirectory extends Component {
       loading,
       selectOrganization,
       selectedCategory,
-      deselectCategory,
       searchInputValue,
     } = this.props;
     // We assign an empty array of filters that we push into as necessary
     let filteredOrganizations = organizations;
+    // If there is a search input value, add it to the filter
+    if (searchInputValue) {
+      filteredOrganizations = filteredOrganizations.filter(organization =>
+        organization.name.toLowerCase().includes(searchInputValue));
+
+      return (
+        <OrganizationDirectoryComponent
+          organizations={filteredOrganizations}
+          loading={loading}
+          selectOrganization={selectOrganization}
+        />
+      );
+    }
 
     // If there is a selected category, add it to the filter
     if (selectedCategory) {
       filteredOrganizations = filteredOrganizations.filter(organization =>
         organization.innovationCategory.identifier === selectedCategory.identifier);
-    }
-    // If there is a search input value, add it to the filter
-    if (searchInputValue) {
-      filteredOrganizations = filteredOrganizations.filter(organization =>
-        organization.name.toLowerCase().includes(searchInputValue));
     }
     return (
       <OrganizationDirectoryComponent
@@ -61,7 +66,6 @@ class OrganizationDirectory extends Component {
         loading={loading}
         selectOrganization={selectOrganization}
         selectedCategory={selectedCategory}
-        deselectCategory={deselectCategory}
       />
     );
   }
@@ -76,7 +80,6 @@ const mapStateToProps = ({ organization: { organizations, loading, selectedCateg
 const mapDispatchToProps = {
   fetchOrganizations: fetchOrganizationsAction,
   selectOrganization: fetchOrganizationAction,
-  deselectCategory: deselectCategoryAction,
 };
 
 export default connect(

@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
 import { colors } from './ui/variables';
-import { BackButton } from './ui';
 
 const OrganizationsList = styled.div`
   flex-grow: 1;
@@ -47,7 +46,6 @@ const OrganizationDirectory = ({
   loading,
   selectOrganization,
   selectedCategory,
-  deselectCategory,
 }) => (
   <OrganizationsList>
     {loading && (
@@ -62,9 +60,6 @@ const OrganizationDirectory = ({
         &nbsp;
         {selectedCategory.name}
       </b>
-      <BackButton onClick={deselectCategory}>
-        Back
-      </BackButton>
     </SelectedCategoryHeader>)}
     {organizations
       && organizations.map(organization => (
@@ -89,7 +84,6 @@ OrganizationDirectory.propTypes = {
   loading: PropTypes.bool.isRequired,
   selectOrganization: PropTypes.func.isRequired,
   selectedCategory: OrganizationCategoryShape,
-  deselectCategory: PropTypes.func.isRequired,
 };
 
 OrganizationDirectory.defaultProps = {
