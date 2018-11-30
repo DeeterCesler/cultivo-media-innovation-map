@@ -24,8 +24,8 @@ const DEFAULT_ZOOM = 14;
  * @type {{latitude: number, longitude: number}}
  */
 const DEFAULT_DU_COORDINATES = {
-  latitude: 39.7392358,
-  longitude: -104.990251,
+  latitude: 39.676654,
+  longitude: -104.962203,
 };
 
 /**
@@ -36,8 +36,8 @@ const DEFAULT_DU_COORDINATES = {
  * @type {{latitude: number, longitude: number}}
  */
 const DEFAULT_DENVER_COORDINATES = {
-  latitude: 39.676654,
-  longitude: -104.962203,
+  latitude: 39.748793,
+  longitude: -104.994479,
 };
 
 export default class OrganizationMap extends Component {
@@ -103,6 +103,8 @@ export default class OrganizationMap extends Component {
           viewport: {
             ...state.viewport,
             ...DEFAULT_DU_COORDINATES,
+            // Reset the zoom too
+            zoom: DEFAULT_ZOOM,
           },
         }));
         break;
@@ -112,6 +114,8 @@ export default class OrganizationMap extends Component {
           viewport: {
             ...state.viewport,
             ...DEFAULT_DENVER_COORDINATES,
+            // Reset the zoom too
+            zoom: DEFAULT_ZOOM,
           },
         }));
         break;
@@ -132,11 +136,11 @@ export default class OrganizationMap extends Component {
           <NavigationControl onViewportChange={viewport => this.setState({ viewport })} />
         </div>
         <RealignMapMarkerContainer>
-          <RealignMapMarker onClick={() => this.changeCenterLocation('Denver')}>
+          <RealignMapMarker onClick={() => this.changeCenterLocation('DU')}>
             View DU
           </RealignMapMarker>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <RealignMapMarker onClick={() => this.changeCenterLocation('DU')}>
+          <RealignMapMarker onClick={() => this.changeCenterLocation('Denver')}>
             View Denver
           </RealignMapMarker>
         </RealignMapMarkerContainer>

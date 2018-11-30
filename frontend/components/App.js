@@ -17,7 +17,8 @@ const OrganizationPanelWrapper = styled.div`
   bottom: 0;
   left: 0;
   position: absolute;
-  top: 0;
+  top: 60px;
+  z-index: 1;
 `;
 
 /**
