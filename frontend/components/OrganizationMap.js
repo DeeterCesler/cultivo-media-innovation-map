@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import getConfig from 'next/config';
 import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
+import WebMercatorViewport from 'viewport-mercator-project';
 import { OrganizationMapMarker, RealignMapMarker, RealignMapMarkerContainer } from './ui';
+import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 
 // We need to read the configuration from the next.config to properly render the map
 const { publicRuntimeConfig } = getConfig();
@@ -45,10 +47,12 @@ export default class OrganizationMap extends Component {
     organizations: PropTypes.arrayOf(PropTypes.object).isRequired,
     selectOrganization: PropTypes.func.isRequired,
     selectedOrganization: PropTypes.object,
+    selectedCategory: OrganizationCategoryShape,
   }
 
   static defaultProps = {
     selectedOrganization: null,
+    selectedCategory: null,
   }
 
   state = {
@@ -72,17 +76,45 @@ export default class OrganizationMap extends Component {
 
   // Allows us to recenter the map on selectedOrganization click
   componentWillReceiveProps = (nextProps) => {
-    // If the selected organization does not match the currently selected organization, we want to
-    // change the center of the map
-    if (this.props.selectedOrganization !== nextProps.selectedOrganization
-      && nextProps.selectedOrganization && nextProps.selectedOrganization.location) {
-      // Reset the center of the map
+    if (this.props.selectedOrganization !== nextProps.selectedOrganization) {
       this.setState(state => ({
-        ...state,
         viewport: {
           ...state.viewport,
           latitude: nextProps.selectedOrganization.location.lat,
           longitude: nextProps.selectedOrganization.location.lng,
+          zoom: DEFAULT_ZOOM,
+        },
+      }));
+    }
+    if (this.props.selectedCategory !== nextProps.selectedCategory) {
+      // Filter organizations to just those that have a proper location property
+      const filteredOrganizations = nextProps.organizations
+        .filter(organization => organization.location
+          && organization.location.lat
+          && organization.location.lng);
+      // Filter organization lats and lngs
+      const lats = filteredOrganizations.map(organization => organization.location.lat);
+      const lngs = filteredOrganizations.map(organization => organization.location.lng);
+      // Handle null case
+      if (lats.length < 0 || lngs.length < 0) return;
+      // Calculate min lats and lngs and max lats and lngs
+      const minLat = Math.min(...lats);
+      const maxLat = Math.max(...lats);
+      const minLng = Math.min(...lngs);
+      const maxLng = Math.max(...lngs);
+      // Utilize the WebMercatorViewport to calculate the proper viewport to handle all orgs
+      const viewport = new WebMercatorViewport(this.state.viewport);
+      const { longitude, latitude, zoom } = viewport.fitBounds(
+        [[minLng, minLat], [maxLng, maxLat]],
+        { padding: 80 },
+      );
+      // Update the latitude and longitude
+      this.setState(state => ({
+        viewport: {
+          ...state.viewport,
+          latitude,
+          longitude,
+          zoom,
         },
       }));
     }

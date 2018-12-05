@@ -52,6 +52,7 @@ class OrganizationMap extends Component {
         selectedOrganization={selectedOrganization}
         organizations={filteredOrganizations}
         selectOrganization={selectOrganization}
+        selectedCategory={selectedCategory}
       />
     );
   }
