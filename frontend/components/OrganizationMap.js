@@ -76,7 +76,10 @@ export default class OrganizationMap extends Component {
 
   // Allows us to recenter the map on selectedOrganization click
   componentWillReceiveProps = (nextProps) => {
-    if (this.props.selectedOrganization !== nextProps.selectedOrganization) {
+    // Check if the new selected organization does not match the current and that there's a location
+    if (nextProps.selectedOrganization
+      && this.props.selectedOrganization !== nextProps.selectedOrganization
+      && nextProps.selectedOrganization.location) {
       this.setState(state => ({
         viewport: {
           ...state.viewport,
