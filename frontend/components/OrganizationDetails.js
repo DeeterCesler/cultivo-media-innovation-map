@@ -28,7 +28,7 @@ const StyledOrganizationDetails = styled.div`
 `;
 
 const StyledOrganizationDetailsHeader = styled.div`
-  background: ${({ backgroundImage }) => backgroundImage ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})` : '#999'};
+  background: ${({ backgroundImage }) => backgroundImage ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${backgroundImage}')` : '#999'};
   background-position: center;
   background-size: cover;
   border-radius: 8px 8px 0 0;

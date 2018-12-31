@@ -105,21 +105,23 @@ export default class OrganizationMap extends Component {
       const maxLat = Math.max(...lats);
       const minLng = Math.min(...lngs);
       const maxLng = Math.max(...lngs);
-      // Utilize the WebMercatorViewport to calculate the proper viewport to handle all orgs
-      const viewport = new WebMercatorViewport(this.state.viewport);
-      const { longitude, latitude, zoom } = viewport.fitBounds(
-        [[minLng, minLat], [maxLng, maxLat]],
-        { padding: 80 },
-      );
-      // Update the latitude and longitude
-      this.setState(state => ({
-        viewport: {
-          ...state.viewport,
-          latitude,
-          longitude,
-          zoom,
-        },
-      }));
+      if (minLat !== maxLat || minLng !== maxLng) {
+        // Utilize the WebMercatorViewport to calculate the proper viewport to handle all orgs
+        const viewport = new WebMercatorViewport(this.state.viewport);
+        const { longitude, latitude, zoom } = viewport.fitBounds(
+          [[minLng, minLat], [maxLng, maxLat]],
+          { padding: 80 },
+        );
+        // Update the latitude and longitude
+        this.setState(state => ({
+          viewport: {
+            ...state.viewport,
+            latitude,
+            longitude,
+            zoom,
+          },
+        }));
+      }
     }
   }
 
