@@ -14,6 +14,7 @@ import OrganizationCategoryShape from '../shapes/OrganizationCategory';
 const StyledSearchWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
 `;
 
 const OrganizationSearchWrapper = ({
