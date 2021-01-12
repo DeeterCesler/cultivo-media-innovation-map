@@ -10,7 +10,7 @@
     "dev": "nodemon index.js",
     "build": "CI= next build frontend",
     "start": "NODE_ENV=production node index.js",
-    "start:dev": "node index.js",
+    "start:dev": "CI= node index.js",
     "lint": "eslint '**/*.js'",
     "lint:fix": "yarn lint --fix"
   },
