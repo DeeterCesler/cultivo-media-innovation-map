@@ -89,6 +89,35 @@ const mapInnovationCategoryFromRecord = (innovationCategory) => {
       return OrganizationCategories.PROGRAMS_AND_RESOURCES;
     case 'Meetups':
       return OrganizationCategories.MEETUPS;
+    // erase the above and only use below
+    case 'Restaurant/Bar/Cafe':
+      return OrganizationCategories.RESTAURANT;
+    case 'Other':
+      return OrganizationCategories.OTHER;
+    case 'Healthcare/Wellness':
+      return OrganizationCategories.HEALTHCARE;
+    case 'Brewery/Distillery':
+      return OrganizationCategories.BREWERY_DISTILLERY;
+    case 'Fitness/Gym':
+      return OrganizationCategories.FITNESS_GYM;
+    case 'Retail: Other':
+      return OrganizationCategories.RETAIL_OTHER;
+    case 'Pet/Animal care':
+      return OrganizationCategories.PET_ANIMAL;
+    case 'House care':
+      return OrganizationCategories.HOUSEHOLD;
+    case 'Retail: Food/Drink':
+      return OrganizationCategories.RETAIL_FOOD_DRINK;
+    case 'Entertainment':
+      return OrganizationCategories.ENTERTAINMENT;
+    case 'Education':
+      return OrganizationCategories.EDUCATION;
+    case 'For Kids':
+      return OrganizationCategories.FOR_KIDS;
+    case 'Nonprofits/Consulting':
+      return OrganizationCategories.NONPROFITS;
+    case 'Coworking/Business-related ':
+      return OrganizationCategories.COWORKING_SPACES;
     default:
       return null;
   }
