@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const path = require('path');
-const Dotenv = require('dotenv-webpack'); // eslint-disable-line
+const Dotenv = require('dotenv'); // eslint-disable-line
 
 module.exports = {
   webpack: (config) => {
